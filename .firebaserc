@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "transeasier-17354": {
+      "hosting": {
+        "transeasier": [
+          "transeasier-17354"
+        ]
+      }
+    }
+  }
+}

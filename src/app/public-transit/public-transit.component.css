@@ -1,0 +1,10 @@
+.title {
+    background-image: url("https://www.klaviyo.com/wp-content/uploads/2016/09/abstract-background-1024x273.jpg");
+    color: whitesmoke;
+    text-align: center;
+    padding: 24px 0;
+}
+
+.container-fluid button {
+    flex-basis: 90px;
+}

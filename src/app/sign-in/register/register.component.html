@@ -1,0 +1,126 @@
+<div class="row justify-content-center mt-3">
+    <p *ngIf="auth.signUpError" class="errmsg">{{auth.signUpError}}</p>
+    <div class="col-md-7 col-sm-12">
+
+        <form class="mx-1 mx-md-4" [formGroup]="registerForm">
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fa fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="text" class="form-control" placeholder="your name" formControlName="name"
+                        [ngClass]="{'is-invalid': (registerForm.get('name').touched || registerForm.get('name').dirty) && registerForm.get('name').invalid }" />
+                    <span class="invalid-feedback mb-3">
+                        <span *ngIf="registerForm.get('name').errors?.required">
+                            You need to enter your name.
+                        </span>
+                        <span *ngIf="registerForm.get('name').errors?.minlength">
+                            The name must be longer than 3 characters.
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fa fa-envelope fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="email" class="form-control" placeholder="your email address" formControlName="email"
+                        [ngClass]="{'is-invalid': 
+                    (registerForm.get('email').touched ||
+                     registerForm.get('email').dirty) &&
+                     registerForm.get('email').invalid }" />
+                    <span class="invalid-feedback">
+                        <span *ngIf="registerForm.get('email').errors?.required">
+                            You need to enter your email address.
+                        </span>
+                        <span *ngIf="registerForm.get('email').errors?.email">
+                            enter a valid email address.
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div formGroupName="pwdGroup">
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                        <input type="password" class="form-control" placeholder="password" formControlName="pwd"
+                            [ngClass]="{'is-invalid': registerForm.get('pwdGroup').errors ||
+                        ((registerForm.get('pwdGroup.pwd').touched ||
+                         registerForm.get('pwdGroup.pwd').dirty) &&
+                         registerForm.get('pwdGroup.pwd').invalid) }" />
+                        <span class="invalid-feedback">
+                            <span *ngIf="registerForm.get('pwdGroup.pwd').errors?.required">
+                                You need to enter your password.
+                            </span>
+                            <span *ngIf="registerForm.get('pwdGroup.pwd').errors?.minlength">
+                                The name must be longer than 8 characters.
+                            </span>
+                        </span>
+
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fa fa-key fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                        <input type="password" class="form-control" placeholder="repeat your password"
+                            formControlName="confirmPwd" [ngClass]="{'is-invalid': registerForm.get('pwdGroup').errors ||
+                            ((registerForm.get('pwdGroup.confirmPwd').touched || 
+                             registerForm.get('pwdGroup.confirmPwd').dirty) && 
+                             !registerForm.get('pwdGroup.confirmPwd').valid) }" />
+                        <span class="invalid-feedback">
+                            <span *ngIf="registerForm.get('pwdGroup.confirmPwd').errors?.required">
+                                You need confirm your password.
+                            </span>
+                            <span *ngIf="registerForm.get('pwdGroup').errors?.match">
+                                The password confirmation does not match.
+                            </span>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fa fa-phone fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="phone" class="form-control" placeholder="your phone number" formControlName="phone"
+                        [ngClass]="{'is-invalid': (registerForm.get('phone').touched || registerForm.get('phone').dirty) && registerForm.get('phone').invalid }" />
+                    <span class="invalid-feedback mb-3">
+                        <span *ngIf="registerForm.get('phone').errors?.required">
+                            You need to enter your phone number.
+                        </span>
+                        <span
+                            *ngIf="registerForm.get('phone').errors?.minlength || registerForm.get('phone').errors?.maxlength || registerForm.get('phone').errors?.pattern">
+                            The phone number must contain 8 digits.
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fa fa-map-marker fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="address" class="form-control" placeholder="your address" formControlName="address"
+                        [ngClass]="{'is-invalid': (registerForm.get('address').touched || registerForm.get('address').dirty) && registerForm.get('address').invalid }" />
+                    <span class="invalid-feedback mb-3">
+                        <span *ngIf="registerForm.get('address').errors?.required">
+                            You need to enter your address.
+                        </span>
+                        <span *ngIf="registerForm.get('address').errors?.minlength">
+                            The address must be longer than 3 characters.
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mx-4">
+                <button [disabled] = "registerForm.invalid"
+                    (click)="auth.signUp(registerForm.get('email').value, registerForm.get('pwdGroup.pwd').value, registerForm.get('name').value, registerForm.get('phone').value, registerForm.get('address').value)"
+                    type="button" class="btn register-btn btn-lg">Register</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

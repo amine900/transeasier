@@ -1,0 +1,30 @@
+<div class="main row justify-content-center mt-3">
+    <p *ngIf="auth.signInError" class="errmsg">{{auth.signInError}}</p>
+    <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+            <form [formGroup]= "loginForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Email address" formControlName="email">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" formControlName="pwd">
+                </div>
+            </form>
+            <div class="d-flex justify-content-between">
+                <div class="check-log">
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="loginCheck" />
+                        <label class="form-check-label" for="loginCheck"> Remember me </label>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <a class="forgot" href="#!">Forgot password?</a>
+                </div>
+            </div>
+            <button (click)="auth.emailSignin(loginForm.get('email').value, loginForm.get('pwd').value)" type="submit" class="btn login-btn btn-block mb-4">Sign in</button>
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,17 @@
+.forgot {
+    color: #47b2e4;
+}
+
+.login-btn {
+    background-color: rgb(92 128 190 / 90%);
+    color: white;
+}
+
+.check-log {
+    padding-left: 5px;
+}
+
+.errmsg {
+    color: red;
+    text-align: center;
+}

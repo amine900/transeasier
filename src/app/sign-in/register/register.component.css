@@ -1,0 +1,11 @@
+.register-btn {
+    background-color: rgb(92 128 190 / 90%);
+    color: white;
+}
+.invalid-feedback {
+    position: absolute;
+}
+.errmsg {
+    color: red;
+    text-align: center;
+}

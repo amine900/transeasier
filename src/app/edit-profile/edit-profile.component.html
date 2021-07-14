@@ -1,0 +1,35 @@
+<section class="py-5 my-5">
+    <div class="container">
+        <div class="bg-white shadow rounded-lg d-block d-sm-flex">
+            <div class="profile-tab-nav border-right">
+                <div class="p-4">
+                    <div class="img-circle text-center mb-3">
+                        <img src="https://s.clipartkey.com/mpngs/s/273-2737919_default-profile.png" alt="Image" class="shadow">
+                    </div>
+                    <h4 class="text-center">User User</h4>
+                </div>
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link" id="account-tab" routerLink="./overview" routerLinkActive="active">
+                        <i class="fa fa-home text-center mr-1"></i> Account overview
+                    </a>
+                    <a class="nav-link" id="password-tab" routerLink="./password" routerLinkActive="active">
+                        <i class="fa fa-key text-center mr-1"></i> Change password
+                    </a>
+                    <a class="nav-link" id="address-tab">
+                        <i class="fa fa-map-marker text-center mr-1 "></i> Addresses
+                    </a>
+                    <a class="nav-link " id="history-tab">
+                        <i class="fa fa-history text-center mr-1 "></i> History
+                    </a>
+                    <a class="nav-link " id="notification-tab " routerLink="./Notifications" routerLinkActive="active">
+                        <i class="fa fa-bell text-center mr-1 "></i> Notifications
+                    </a>
+                </div>
+                <a class="signOut"> Sign Out </a>
+            </div>
+            <div class="tab-content p-4 p-md-5 " id="v-pills-tabContent ">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,93 @@
+@import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css");
+@import url("https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css");
+body {
+  margin: 0;
+  padding: 0;
+}
+#map {
+  margin-top: 80px;
+  width: 98vw;
+  height: 88vh;
+}
+.weather {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    align-items: flex-end;
+}
+.weather-btn {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+.weather-logo {
+    height: 80px;
+}
+.weather-logo:hover {
+    opacity: .8;
+    transition: 0.3s;
+}
+.card {
+    background: #000000d0;
+    color: white;
+    padding: 2em;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 420px;
+    margin: 1em;
+  }
+  
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+  .search-btn {
+    margin: 0.5em;
+    border-radius: 50%;
+    border: none;
+    height: 44px;
+    width: 44px;
+    outline: none;
+    background: #7c7c7c2b;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+
+  input.search-bar {
+    border: none;
+    outline: none;
+    padding: 0.4em 1em;
+    border-radius: 24px;
+    background: #7c7c7c2b;
+    color: white;
+    font-family: inherit;
+    font-size: 105%;
+    width: calc(100% - 100px);
+  }
+  
+  button:hover {
+    background: #7c7c7c6b;
+  }
+  
+  h1.temp {
+    margin: 0;
+    margin-bottom: 0.4em;
+  }
+  
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+  
+  .description {
+    text-transform: capitalize;
+    margin-left: 8px;
+  }
+  
