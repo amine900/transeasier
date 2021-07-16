@@ -17,7 +17,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.auth.signUpError = ""
     this.registerForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       pwdGroup: this.fb.group({
         pwd: ['', [Validators.required, Validators.minLength(8)]],

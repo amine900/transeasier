@@ -6,13 +6,28 @@
             <div class="d-flex flex-row align-items-center mb-4">
                 <i class="fa fa-user fa-lg me-3 fa-fw"></i>
                 <div class="form-outline flex-fill mb-0">
-                    <input type="text" class="form-control" placeholder="your name" formControlName="name"
-                        [ngClass]="{'is-invalid': (registerForm.get('name').touched || registerForm.get('name').dirty) && registerForm.get('name').invalid }" />
+                    <input type="text" class="form-control" placeholder="your first name" formControlName="firstName"
+                        [ngClass]="{'is-invalid': (registerForm.get('firstName').touched || registerForm.get('firstName').dirty) && registerForm.get('firstName').invalid }" />
                     <span class="invalid-feedback mb-3">
-                        <span *ngIf="registerForm.get('name').errors?.required">
+                        <span *ngIf="registerForm.get('firstName').errors?.required">
+                            You need to enter your first name.
+                        </span>
+                        <span *ngIf="registerForm.get('firstName').errors?.minlength">
+                            The first name must be longer than 3 characters.
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fa fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <input type="text" class="form-control" placeholder="your last name" formControlName="lastName"
+                        [ngClass]="{'is-invalid': (registerForm.get('lastName').touched || registerForm.get('lastName').dirty) && registerForm.get('lastName').invalid }" />
+                    <span class="invalid-feedback mb-3">
+                        <span *ngIf="registerForm.get('lastName').errors?.required">
                             You need to enter your name.
                         </span>
-                        <span *ngIf="registerForm.get('name').errors?.minlength">
+                        <span *ngIf="registerForm.get('lastName').errors?.minlength">
                             The name must be longer than 3 characters.
                         </span>
                     </span>
