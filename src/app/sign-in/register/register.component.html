@@ -25,10 +25,10 @@
                         [ngClass]="{'is-invalid': (registerForm.get('lastName').touched || registerForm.get('lastName').dirty) && registerForm.get('lastName').invalid }" />
                     <span class="invalid-feedback mb-3">
                         <span *ngIf="registerForm.get('lastName').errors?.required">
-                            You need to enter your name.
+                            You need to enter your last name.
                         </span>
                         <span *ngIf="registerForm.get('lastName').errors?.minlength">
-                            The name must be longer than 3 characters.
+                            The last name must be longer than 3 characters.
                         </span>
                     </span>
                 </div>
@@ -66,7 +66,7 @@
                                 You need to enter your password.
                             </span>
                             <span *ngIf="registerForm.get('pwdGroup.pwd').errors?.minlength">
-                                The name must be longer than 8 characters.
+                                The password must be longer than 8 characters.
                             </span>
                         </span>
 
@@ -82,12 +82,14 @@
                              registerForm.get('pwdGroup.confirmPwd').dirty) && 
                              !registerForm.get('pwdGroup.confirmPwd').valid) }" />
                         <span class="invalid-feedback">
-                            <span *ngIf="registerForm.get('pwdGroup.confirmPwd').errors?.required">
-                                You need confirm your password.
+                            <span *ngIf="registerForm.get('pwdGroup.confirmPwd').errors?.required; else pwdunmatch">
+                                You need to confirm your password.
                             </span>
-                            <span *ngIf="registerForm.get('pwdGroup').errors?.match">
-                                The password confirmation does not match.
-                            </span>
+                            <ng-template #pwdunmatch>
+                                <span *ngIf="registerForm.get('pwdGroup').errors?.match">
+                                    The password confirmation does not match.
+                                </span>
+                            </ng-template>         
                         </span>
 
                     </div>
@@ -121,16 +123,13 @@
                         <span *ngIf="registerForm.get('address').errors?.required">
                             You need to enter your address.
                         </span>
-                        <span *ngIf="registerForm.get('address').errors?.minlength">
-                            The address must be longer than 3 characters.
-                        </span>
                     </span>
                 </div>
             </div>
 
             <div class="d-flex justify-content-center mx-4">
                 <button [disabled] = "registerForm.invalid"
-                    (click)="auth.signUp(registerForm.get('email').value, registerForm.get('pwdGroup.pwd').value, registerForm.get('name').value, registerForm.get('phone').value, registerForm.get('address').value)"
+                    (click)="auth.signUp(registerForm.get('email').value, registerForm.get('pwdGroup.pwd').value, registerForm.get('firstName').value, registerForm.get('lastName').value,registerForm.get('phone').value, registerForm.get('address').value)"
                     type="button" class="btn register-btn btn-lg">Register</button>
             </div>
 

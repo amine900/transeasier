@@ -6,7 +6,7 @@
                     <div class="img-circle text-center mb-3">
                         <img src="https://s.clipartkey.com/mpngs/s/273-2737919_default-profile.png" alt="Image" class="shadow">
                     </div>
-                    <h4 class="text-center">User User</h4>
+                    <h4 class="text-center">{{username}}</h4>
                 </div>
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link" id="account-tab" routerLink="./overview" routerLinkActive="active">
@@ -25,7 +25,6 @@
                         <i class="fa fa-bell text-center mr-1 "></i> Notifications
                     </a>
                 </div>
-                <a class="signOut"> Sign Out </a>
             </div>
             <div class="tab-content p-4 p-md-5 " id="v-pills-tabContent ">
                 <router-outlet></router-outlet>

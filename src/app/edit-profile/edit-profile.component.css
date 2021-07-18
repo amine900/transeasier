@@ -44,10 +44,3 @@ body {
     background-color: rgb(92 128 190 / 90%) !important;
     color: white !important;
 }
-
-.signOut {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translate(-50%, 0);
-}

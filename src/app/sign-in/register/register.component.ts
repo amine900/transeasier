@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/services/user.model';
 
 
 @Component({
@@ -11,7 +10,6 @@ import { User } from 'src/app/services/user.model';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  existingEmails: string[]
   constructor(public auth: AuthService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -27,11 +25,6 @@ export class RegisterComponent implements OnInit {
       phone: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern("^[0-9]*$")]],
       address: ['', Validators.required]
     });
-    this.auth.getAllUsers().valueChanges({idField: "id"}).subscribe(
-      users => {
-        this.existingEmails = users.map(u => u.email)
-      }
-    )
   }
   pwdMatcher(c: AbstractControl): { [key: string]: boolean } | null {
     const pwdControl = c.get('pwd');
