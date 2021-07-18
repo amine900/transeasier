@@ -13,6 +13,7 @@ export class PasswordComponent implements OnInit {
   constructor(public auth: AuthService,private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.auth.pwdmsg = ""
     this.pwdForm = this.fb.group({
       pwdGroup: this.fb.group({
         newpwd: ['', [Validators.required, Validators.minLength(8)]],
