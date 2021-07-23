@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-pwd-reset',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pwd-reset.component.css']
 })
 export class PwdResetComponent implements OnInit {
-
-  constructor() { }
+  email:string = ""
+  constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
   }

@@ -20,6 +20,7 @@ export class AuthService {
   signInError: string;
   overviewmsg: string;
   pwdmsg: string;
+  pwdResetMsg: string
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -123,10 +124,11 @@ export class AuthService {
     firebase
       .auth()
       .sendPasswordResetEmail(email)
-      .then(() => {})
-      .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+      .then(() => {
+        this.pwdResetMsg = "password reset email sent"
+      })
+      .catch(() => {
+        this.pwdResetMsg = "email not found"
       });
   }
   changePwd(pwd) {

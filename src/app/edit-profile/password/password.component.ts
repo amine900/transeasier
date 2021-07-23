@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class PasswordComponent implements OnInit {
   pwdForm: FormGroup;
-
+  forgotPwd: boolean
   constructor(public auth: AuthService,private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -20,6 +20,7 @@ export class PasswordComponent implements OnInit {
         confirmPwd: ['', Validators.required]
       }, {validator: this.pwdMatcher}),
     });
+    this.forgotPwd = false
   }
   pwdMatcher(c: AbstractControl): { [key: string]: boolean } | null {
     const pwdControl = c.get('newpwd');
@@ -33,5 +34,8 @@ export class PasswordComponent implements OnInit {
       return null;
     }
     return { match: true };
+  }
+  forgotPwdUpdate():void {
+    this.forgotPwd = !this.forgotPwd
   }
 }

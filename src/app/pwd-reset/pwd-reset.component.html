@@ -1,1 +1,17 @@
-<p>pwd-reset works!</p>
+<div class="card text-center">
+    <div class="card-body">
+        <h5 class="card-title">Request Password Reset</h5>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Please enter your email:</label>
+            <input type="email" class="form-control" #emailVar="ngModel" [(ngModel)]="email" email required
+                [ngClass]="{'is-invalid': emailVar.touched && !emailVar.valid }">
+            <span class="invalid-feedback">
+                <span *ngIf="emailVar.errors">
+                    Please enter a valid email.
+                </span> 
+            </span>
+        </div>
+        <button class="btn update" [disabled]="emailVar.invalid" (click)="auth.resetPwd(email)">Submit</button>
+        <p [ngStyle]="{'color': auth.pwdResetMsg == 'password reset email sent'? 'green' : 'red' }" class="msg" class="mt-2">{{auth.pwdResetMsg}}</p>
+    </div>
+</div>

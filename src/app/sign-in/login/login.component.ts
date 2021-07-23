@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  forgotPwd: boolean
   constructor(public auth: AuthService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -17,6 +18,10 @@ export class LoginComponent implements OnInit {
       email: '',
       pwd: '',
     })
+    this.forgotPwd = false
+  }
+  forgotPwdUpdate():void {
+    this.forgotPwd = !this.forgotPwd
   }
 
 }
