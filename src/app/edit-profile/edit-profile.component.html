@@ -4,7 +4,16 @@
             <div class="profile-tab-nav border-right">
                 <div class="p-4">
                     <div class="img-circle text-center mb-3">
-                        <img src="https://s.clipartkey.com/mpngs/s/273-2737919_default-profile.png" alt="Image" class="shadow">
+                        <img [src]="pfpURL" alt="pfp" class="shadow">
+                        <div (click)="changepfpStatus()" class="edit"><i class="fa fa-pencil text-center mt-2"></i></div>
+                    </div>
+                    <div *ngIf="pfp" class="change-pfp">
+                        <i (click)="changepfpStatus()" class="fa fa-times"></i>
+                        <div class="d-flex align-items-center flex-column">
+                            <label for="imgUrl">image address</label>
+                            <input [(ngModel)]="modifiedpfp" type="text" id="imgUrl">
+                        </div>
+                        <button class="btn update" (click)="update(auth.updateUserData({photoURL: modifiedpfp}))">Update</button>
                     </div>
                     <h4 class="text-center">{{username}}</h4>
                 </div>

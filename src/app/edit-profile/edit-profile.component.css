@@ -38,9 +38,53 @@ body {
     width: 100px;
     border-radius: 100%;
     border: 5px solid #fff;
+    position: relative;
+    z-index: 1;
 }
 
 .active {
     background-color: rgb(92 128 190 / 90%) !important;
     color: white !important;
+}
+.edit {
+    height: 40px;
+    width: 40px;
+    background-color: #e1dfdf;
+    border-radius: 100%;
+    position: absolute;
+    right: 63px;
+    top: 94px;
+    z-index: 0;
+    cursor: pointer;
+}
+.edit:hover {
+    opacity: 0.6;
+}
+.change-pfp {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 2;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 135px;
+    width: 90%;
+    background-color: white;
+    opacity: 0.8;
+    border: grey 1px solid;
+    justify-content: space-evenly;
+}
+.update {
+    background-color: #47b2e4;
+    color: white;
+}
+.fa-times {
+    position: absolute;
+    top:5px;
+    right: 5px;
+    color: #ed4464;
+    cursor: pointer;
 }

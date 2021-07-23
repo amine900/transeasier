@@ -72,6 +72,7 @@ export class AuthService {
           firstName: firstName,
           lastName: lastName,
           phoneNumber: phonenumber,
+          photoURL: "https://s.clipartkey.com/mpngs/s/273-2737919_default-profile.png",
           address: address,
           gender: 'null',
           birthDate: 'dd/mm/yyyy',
