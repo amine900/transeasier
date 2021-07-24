@@ -14,6 +14,7 @@ import { BusComponent } from './public-transit/bus/bus.component';
 import { MetroComponent } from './public-transit/metro/metro.component';
 import { PublicTransitComponent } from './public-transit/public-transit.component';
 import { TgmComponent } from './public-transit/tgm/tgm.component';
+import { AuthGuardGuard } from './services/auth-guard.guard';
 import { LoginComponent } from './sign-in/login/login.component';
 import { RegisterComponent } from './sign-in/register/register.component';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -31,7 +32,7 @@ const routes: Routes = [
 { path: '', redirectTo: 'bus', pathMatch: 'full' },
 { path: 'bus', component: BusComponent},
 { path: 'TGM', component: TgmComponent}]},
-{path: "profile", component: EditProfileComponent, children: [{path: "address", component: AddressComponent}, {path: "history", component:HistoryComponent},
+{path: "profile", component: EditProfileComponent, canActivate: [AuthGuardGuard], children: [{path: "address", component: AddressComponent}, {path: "history", component:HistoryComponent},
 {path: "Notifications", component:NotificationsComponent}, {path:"password", component:PasswordComponent}, {path: "overview", component:OverviewComponent}, {path: "", redirectTo:"overview", pathMatch:"full"}]}
 ];
 
