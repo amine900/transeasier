@@ -1,4 +1,4 @@
-export interface Transport {
+export class Transport {
     id: string;
     name:number;
     location: string;
@@ -6,4 +6,5 @@ export interface Transport {
     time: string;
     seats: string;
     stationCoords: string;
+    locationAddress:string;
 }

@@ -27,9 +27,9 @@ export class LocationComponent implements OnInit {
       );
     }
     (mapboxgl as any).accessToken = environment.mapboxKey;
-    this.stationCoords = this.transport.stationCoords.split(", ").map(x => Number(x));
+    this.stationCoords = this.transport.stationCoords.split(",").map(x => Number(x));
     this.stationCoords = new mapboxgl.LngLat(this.stationCoords[0], this.stationCoords[1]);
-    this.locationCoords = this.transport.location.split(", ").map(x => Number(x));
+    this.locationCoords = this.transport.location.split(",").map(x => Number(x));
     this.locationCoords = new mapboxgl.LngLat(this.locationCoords[0], this.locationCoords[1]);
     this.map = new mapboxgl.Map({
       container: 'map',

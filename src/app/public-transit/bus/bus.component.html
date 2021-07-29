@@ -11,7 +11,7 @@
     <tbody>
         <tr *ngFor="let bus of busService.filteredBuses">
             <th scope="row">{{bus.name}}</th>
-            <td (click)="selectBus(bus)">{{bus.location}}</td>
+            <td (click)="selectBus(bus)">{{bus.locationAddress}}</td>
             <td>{{bus.station}}</td>
             <td>{{bus.time}}</td>
             <td>{{bus.seats}}</td>

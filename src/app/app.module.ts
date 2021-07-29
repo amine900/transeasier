@@ -29,6 +29,7 @@ import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PwdResetComponent } from './pwd-reset/pwd-reset.component';
 import { LocationComponent } from './public-transit/location/location.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { LocationComponent } from './public-transit/location/location.component'
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Transport } from './model/transport';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +17,14 @@ export class TransportServiceService {
   TGMlist:Transport[];
   filteredTGM: Transport[];
   sortValue: String = "time"
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private http: HttpClient) {
   }
   getAll(path: string):AngularFirestoreCollection<Transport> {
     return this.db.collection(path)
   }
   filterTrans(transport: Transport[]): Transport[] {
     return transport?.filter((mean: Transport) => 
-    mean.location.includes(this.location) && mean.station.includes(this.station));
+    mean.locationAddress.toLowerCase().includes(this.location.toLowerCase()) && mean.station.includes(this.station.toLowerCase()));
   }
   sortTrans(transport: Transport[]): void {
     if (this.sortValue == "seats") {
@@ -42,5 +44,9 @@ export class TransportServiceService {
     this.sortTrans(this.filteredTGM);
     this.sortTrans(this.filteredBuses);
   }
-
+  reverseGeocoding(transport): any {
+    let coords = transport.location
+    console.log(coords)
+    return this.http.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coords}.json?access_token=${environment.mapboxKey}`)
+  }
 }
