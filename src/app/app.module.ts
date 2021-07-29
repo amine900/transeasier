@@ -28,6 +28,7 @@ import { AngularFireAuthModule} from "@angular/fire/auth";
 import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PwdResetComponent } from './pwd-reset/pwd-reset.component';
+import { LocationComponent } from './public-transit/location/location.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { PwdResetComponent } from './pwd-reset/pwd-reset.component';
     NotificationsComponent,
     LoginComponent,
     RegisterComponent,
-    PwdResetComponent
+    PwdResetComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,
