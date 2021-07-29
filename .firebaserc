@@ -1,9 +1,9 @@
 {
   "targets": {
-    "transeasier-17354": {
+    "transeasier-final": {
       "hosting": {
         "transeasier": [
-          "transeasier-17354"
+          "transeasier-final"
         ]
       }
     }

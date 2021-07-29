@@ -5,12 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyCFvATgCcO8cKwJJofqq-v004ZI8d9fzww",
-    authDomain: "transeasier-17354.firebaseapp.com",
-    databaseURL: "https://transeasier-17354-default-rtdb.firebaseio.com",
-    projectId: "transeasier-17354",
-    storageBucket: "transeasier-17354.appspot.com",
-    messagingSenderId: "442953308407"
+    apiKey: "AIzaSyC4pA2nQlBurRbmBMjMW0sdE7UvGIvG5t8",
+    authDomain: "transeasier-final.firebaseapp.com",
+    projectId: "transeasier-final",
+    storageBucket: "transeasier-final.appspot.com",
+    messagingSenderId: "706134809771",
+    appId: "1:706134809771:web:86e30118294c462ffbebee",
+    measurementId: "G-G44YEELK5H"
   },
   mapboxKey: 'pk.eyJ1IjoiYW1pbmUtYnIxMiIsImEiOiJja3FzM2h1MjExZHVvMnJxaDNlZTFlenVkIn0.XnGk1zYdDT6_kLuJEmTkGg'
 };
