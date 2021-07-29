@@ -5,4 +5,5 @@ export interface Transport {
     station: string;
     time: string;
     seats: string;
+    stationCoords: string;
 }

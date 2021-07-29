@@ -9,14 +9,14 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let metro of busService.filteredBuses">
-            <th scope="row">{{metro.name}}</th>
-            <td>{{metro.location}}</td>
-            <td>{{metro.station}}</td>
-            <td>{{metro.time}}</td>
-            <td>{{metro.seats}}</td>
+        <tr *ngFor="let bus of busService.filteredBuses">
+            <th scope="row">{{bus.name}}</th>
+            <td (click)="selectBus(bus)">{{bus.location}}</td>
+            <td>{{bus.station}}</td>
+            <td>{{bus.time}}</td>
+            <td>{{bus.seats}}</td>
         </tr>
 
     </tbody>
 </table>
-<app-location></app-location>
+<app-location *ngIf="selectedBus" [transport] = selectedBus></app-location>

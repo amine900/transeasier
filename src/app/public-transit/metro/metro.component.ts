@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Transport } from '../model/transport';
 import { TransportServiceService } from '../transport-service.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { TransportServiceService } from '../transport-service.service';
 
 })
 export class MetroComponent implements OnInit {
+  selectedMetro: Transport
   constructor(public metroService: TransportServiceService) {
     
    }
@@ -24,5 +26,8 @@ export class MetroComponent implements OnInit {
         this.metroService.filteredMetros = this.metroService.filterTrans(rs)
       }
     )
+  }
+  selectMetro(Metro: Transport) {
+    this.selectedMetro = Metro
   }
 }

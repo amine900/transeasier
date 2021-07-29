@@ -11,7 +11,7 @@
     <tbody>
         <tr *ngFor="let metro of metroService.filteredMetros">
             <th scope="row">{{metro.name}}</th>
-            <td>{{metro.location}}</td>
+            <td (click)="selectMetro(metro)">{{metro.location}}</td>
             <td>{{metro.station}}</td>
             <td>{{metro.time}}</td>
             <td>{{metro.seats}}</td>
@@ -19,3 +19,4 @@
 
     </tbody>
 </table>
+<app-location *ngIf="selectedMetro" [transport] = selectedMetro></app-location>

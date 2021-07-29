@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Transport } from '../model/transport';
 import { TransportServiceService } from '../transport-service.service';
 
 @Component({
@@ -7,6 +8,7 @@ import { TransportServiceService } from '../transport-service.service';
   styleUrls: ['./tgm.component.css']
 })
 export class TgmComponent implements OnInit {
+  selectedTGM: Transport
   constructor(public TGMservice: TransportServiceService) {
     
   }
@@ -24,4 +26,7 @@ export class TgmComponent implements OnInit {
      }
    )
  }
+ selectTGM(TGM: Transport) {
+  this.selectedTGM = TGM
+}
 }

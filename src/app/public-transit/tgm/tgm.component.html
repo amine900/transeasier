@@ -11,10 +11,11 @@
     <tbody>
         <tr *ngFor="let TGM of TGMservice.filteredTGM">
             <th scope="row">{{TGM.name}}</th>
-            <td>{{TGM.location}}</td>
+            <td (click)="selectTGM(TGM)">{{TGM.location}}</td>
             <td>{{TGM.station}}</td>
             <td>{{TGM.time}}</td>
             <td>{{TGM.seats}}</td>
         </tr>
     </tbody>
 </table>
+<app-location *ngIf="selectedTGM" [transport]=selectedTGM></app-location>
