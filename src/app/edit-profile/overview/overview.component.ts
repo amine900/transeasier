@@ -13,6 +13,7 @@ export class OverviewComponent implements OnInit {
   constructor(public auth: AuthService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.auth.overviewmsg = ""
     this.overviewForm = this.fb.group({
       firstName: ['first name', [Validators.required, Validators.minLength(3)]],
       lastName: ['last name', [Validators.required, Validators.minLength(3)]],

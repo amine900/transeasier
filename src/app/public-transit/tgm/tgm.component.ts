@@ -19,10 +19,12 @@ export class TgmComponent implements OnInit {
  getAllTGM(){
    this.TGMservice.getAll("TGM").valueChanges({idField: "id"}).subscribe(
      rs => {
-       console.log(rs)
-       this.TGMservice.TGMlist = this.TGMservice.filteredTGM = rs;
-       this.TGMservice.sortTrans(this.TGMservice.TGMlist);
-      this.TGMservice.filteredTGM = this.TGMservice.filterTrans(rs);
+      rs.forEach(transport => {this.TGMservice.reverseGeocoding(transport).subscribe(data => {
+        transport.locationAddress = data["features"][0].place_name
+        this.TGMservice.TGMlist = this.TGMservice.filteredTGM = rs
+        this.TGMservice.sortTrans(this.TGMservice.TGMlist);
+        this.TGMservice.filteredTGM = this.TGMservice.filterTrans(rs)
+      })})
      }
    )
  }

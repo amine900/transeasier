@@ -20,10 +20,12 @@ export class MetroComponent implements OnInit {
   getAllmetros(){
     this.metroService.getAll("metros").valueChanges({idField: "id"}).subscribe(
       rs => {
-        console.log(rs)
-        this.metroService.metros = this.metroService.filteredMetros = rs
-        this.metroService.sortTrans(this.metroService.metros);
-        this.metroService.filteredMetros = this.metroService.filterTrans(rs)
+        rs.forEach(transport => {this.metroService.reverseGeocoding(transport).subscribe(data => {
+          transport.locationAddress = data["features"][0].place_name
+          this.metroService.metros = this.metroService.filteredMetros = rs
+          this.metroService.sortTrans(this.metroService.metros);
+          this.metroService.filteredMetros = this.metroService.filterTrans(rs)
+        })})
       }
     )
   }
