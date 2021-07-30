@@ -11,7 +11,7 @@
     <tbody>
         <tr *ngFor="let TGM of TGMservice.filteredTGM">
             <th scope="row">{{TGM.name}}</th>
-            <td (click)="selectTGM(TGM)">{{TGM.location}}</td>
+            <td class="text-info" (click)="selectTGM(TGM)">{{TGM.locationAddress}}</td>
             <td>{{TGM.station}}</td>
             <td>{{TGM.time}}</td>
             <td>{{TGM.seats}}</td>

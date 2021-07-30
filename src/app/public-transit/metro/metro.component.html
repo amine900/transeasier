@@ -11,7 +11,7 @@
     <tbody>
         <tr *ngFor="let metro of metroService.filteredMetros">
             <th scope="row">{{metro.name}}</th>
-            <td (click)="selectMetro(metro)">{{metro.location}}</td>
+            <td class="text-info" (click)="selectMetro(metro)">{{metro.locationAddress}}</td>
             <td>{{metro.station}}</td>
             <td>{{metro.time}}</td>
             <td>{{metro.seats}}</td>

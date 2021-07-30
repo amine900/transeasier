@@ -24,7 +24,7 @@ export class TransportServiceService {
   }
   filterTrans(transport: Transport[]): Transport[] {
     return transport?.filter((mean: Transport) => 
-    mean.locationAddress.toLowerCase().includes(this.location.toLowerCase()) && mean.station.includes(this.station.toLowerCase()));
+    mean.locationAddress?.toLowerCase().includes(this.location.toLowerCase()) && mean.station.includes(this.station.toLowerCase()));
   }
   sortTrans(transport: Transport[]): void {
     if (this.sortValue == "seats") {
