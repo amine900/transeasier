@@ -40,6 +40,7 @@ export class MapsComponent implements OnInit {
     this.map.addControl(
       new MapboxDirections({
         accessToken: mapboxgl.accessToken,
+        unit: 'metric',
       }),
       'top-left'
     );
