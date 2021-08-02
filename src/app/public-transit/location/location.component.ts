@@ -16,8 +16,12 @@ export class LocationComponent implements OnInit {
   canvas: HTMLElement
   locationCoords: any;
   stationCoords: any;
-  station = new mapboxgl.Marker()
+  station = new mapboxgl.Marker({
+    color: "red",
+    })
   location = new mapboxgl.Marker()
+  busText: mapboxgl.Popup;
+  stationText: mapboxgl.Popup;
   constructor() { }
   ngOnChanges(): void {
     if (mapboxgl.getRTLTextPluginStatus() !== 'loaded') {
@@ -37,9 +41,16 @@ export class LocationComponent implements OnInit {
       center: this.locationCoords,
       zoom: 13,
     });
+    this.busText = new mapboxgl.Popup()
+      .setText("bus")
+      .addTo(this.map);
+    this.stationText = new mapboxgl.Popup()
+      .setText(this.transport.station)
+      .addTo(this.map);
+    
     this.map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-    this.station.setLngLat(this.stationCoords).addTo(this.map)
-    this.location.setLngLat(this.locationCoords).addTo(this.map)
+    this.station.setLngLat(this.stationCoords).addTo(this.map).setPopup(this.stationText)
+    this.location.setLngLat(this.locationCoords).addTo(this.map).setPopup(this.busText)
   }
   ngOnInit(): void {
   }
