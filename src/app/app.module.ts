@@ -1,3 +1,4 @@
+import { CommunityComponent } from './community/community.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -52,7 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     PwdResetComponent,
-    LocationComponent
+    LocationComponent,
+    CommunityComponent
   ],
   imports: [
     BrowserModule,

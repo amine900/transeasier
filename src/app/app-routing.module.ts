@@ -1,3 +1,4 @@
+import { CommunityComponent } from './community/community.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
 { path: '', redirectTo: 'home', pathMatch: 'full' },
 { path: 'contact', component: ContactComponent},
 { path: 'aboutUs', component: AboutUsComponent},
+{ path: 'community', component: CommunityComponent},
 { path: 'signIn', component: SignInComponent, children: [{ path: 'login', component: LoginComponent},
 { path: '', redirectTo: 'login', pathMatch: 'full' },
 { path: 'register', component: RegisterComponent}]},
