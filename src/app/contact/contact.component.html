@@ -1,28 +1,27 @@
 <section id="contact">
-    <div class="wrapper rounded d-flex align-items-stretch ">
-        <div class="bg-secondary side-bar">
-            <div class="text-white "> <span class="fa fa-envelope "></span> </div>
-            <div class="pt-5 cursive text-light "><i class="fa fa-map-marker me-3 "></i> Location: <br><span class="text-info">Tunis, Tunisia</span></div>
-            <div class="pt-sm-5 pt-5 cursive mt-sm-5 text-light "><i class="fa fa-envelope me-3 "></i> Email:
-                <br><span class="text-info">tecnotuner@gmail.com</span>
-            </div>
-            <div class="pt-sm-5 pt-5 cursive mt-sm-5 text-light "><i class="fa fa-phone me-3 "></i> Phone:
-                <br><span class="text-info">+ 216 27 567 88</span>
-            </div>
-        </div>
-        <div class="contact-form ">
-            <div class="h3 ">Send Us A Message</div>
-            <form>
-                <div class="d-flex align-items-center flex-wrap justify-content-between pt-4 ">
-                    <div class="form-group pt-lg-2 pt-3 "> <label for="name ">Your Name</label> <input type="text " name="name " class="form-control " required> </div>
-                    <div class="form-group pt-lg-2 pt-3 "> <label for="name ">Your Email</label> <input type="email " name="email " class="form-control " required> </div>
-                </div>
-                <div class="form-group pt-3 "> <label for="message ">Message</label> <textarea name="message " class="form-control " required></textarea> </div>
-                <div class="d-flex align-items-center flex-wrap justify-content-end pt-lg-5 mt-lg-4 mt-5 ">
-                    <div class="btn btn-submit text-white" data-bs-toggle="modal " data-bs-target="#myModal "> Submit
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+  <div class="wrapper rounded d-flex align-items-stretch ">
+      <div class="bg-secondary side-bar">
+          <div class="text-white "> <span class="fa fa-envelope "></span> </div>
+          <div class="pt-5 cursive text-light "><i class="fa fa-map-marker me-3 "></i> Location: <br><span class="text-info">Tunis, Tunisia</span></div>
+          <div class="pt-sm-5 pt-5 cursive mt-sm-5 text-light "><i class="fa fa-envelope me-3 "></i> Email
+              <br><span class="text-info">tecnotuner@gmail.com</span>
+          </div>
+          <div class="pt-sm-5 pt-5 cursive mt-sm-5 text-light "><i class="fa fa-phone me-3 "></i> Phone:
+              <br><span class="text-info">+ 216 27 567 88</span>
+          </div>
+      </div>
+      <div class="contact-form ">
+          <div class="h3 ">Send Us A Message</div>
+          <form (ngSubmit)="sendEmail($event)">
+              <div class="d-flex align-items-center flex-wrap justify-content-between pt-4 ">
+                  <div class="form-group pt-lg-2 pt-3 "> <label for="name ">Your Name</label> <input type="text" name="user_name" class="form-control "> </div>
+                  <div class="form-group pt-lg-2 pt-3 "> <label for="name ">Your Email</label> <input type="email " name="user_email" class="form-control "  > </div>
+              </div>
+              <div class="form-group pt-3 "> <label for="message ">Message</label> <textarea name="message" class="form-control " ></textarea> </div>
+              <div class="d-flex align-items-center flex-wrap justify-content-end pt-lg-5 mt-lg-4 mt-5 ">
+                 <button class="btn btn-submit text-white" data-bs-toggle="modal " data-bs-target="#myModal " type='Submit'>Submit</button>
+              </div>
+          </form>
+      </div>
+  </div>
 </section>
