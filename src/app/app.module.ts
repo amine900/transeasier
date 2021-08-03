@@ -31,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PwdResetComponent } from './pwd-reset/pwd-reset.component';
 import { LocationComponent } from './public-transit/location/location.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     PwdResetComponent,
     LocationComponent,
-    CommunityComponent
+    CommunityComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
