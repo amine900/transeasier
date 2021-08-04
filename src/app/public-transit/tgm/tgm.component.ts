@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Transport } from '../model/transport';
 import { TransportServiceService } from '../transport-service.service';
 
@@ -8,7 +9,8 @@ import { TransportServiceService } from '../transport-service.service';
   styleUrls: ['./tgm.component.css']
 })
 export class TgmComponent implements OnInit {
-  selectedTGM: Transport
+  selectedTGM: Transport;
+  $selectedTGMObs: Observable<Transport>;
   constructor(public TGMservice: TransportServiceService) {
     
   }
@@ -29,6 +31,7 @@ export class TgmComponent implements OnInit {
    )
  }
  selectTGM(TGM: Transport) {
+  this.$selectedTGMObs = this.TGMservice.getAll("TGM").doc(TGM.id).valueChanges()
   this.selectedTGM = TGM
 }
 }

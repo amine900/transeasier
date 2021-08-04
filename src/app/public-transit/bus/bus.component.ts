@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Transport } from '../model/transport';
 import { TransportServiceService } from '../transport-service.service';
 
@@ -8,6 +9,7 @@ import { TransportServiceService } from '../transport-service.service';
   styleUrls: ['./bus.component.css']
 })
 export class BusComponent implements OnInit {
+  $selectedBusObs: Observable<Transport>
   selectedBus: Transport
   constructor(public busService: TransportServiceService) {
     
@@ -30,6 +32,7 @@ export class BusComponent implements OnInit {
    )
  }
  selectBus(Bus: Transport) {
+   this.$selectedBusObs = this.busService.getAll("bus").doc(Bus.id).valueChanges()
    this.selectedBus = Bus
  }
 }

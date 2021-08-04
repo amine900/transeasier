@@ -19,4 +19,4 @@
 
     </tbody>
 </table>
-<app-location *ngIf="selectedMetro" [transport] = selectedMetro></app-location>
+<app-location *ngIf="selectedMetro" [$transportObs] = "$selectedMetroObs" [transport] = "selectedMetro"></app-location>

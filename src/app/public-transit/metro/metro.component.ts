@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Transport } from '../model/transport';
 import { TransportServiceService } from '../transport-service.service';
 
@@ -9,7 +10,8 @@ import { TransportServiceService } from '../transport-service.service';
 
 })
 export class MetroComponent implements OnInit {
-  selectedMetro: Transport
+  selectedMetro: Transport;
+  $selectedMetroObs: Observable<Transport>;
   constructor(public metroService: TransportServiceService) {
     
    }
@@ -30,6 +32,7 @@ export class MetroComponent implements OnInit {
     )
   }
   selectMetro(Metro: Transport) {
+    this.$selectedMetroObs = this.metroService.getAll("metros").doc(Metro.id).valueChanges()
     this.selectedMetro = Metro
   }
 }

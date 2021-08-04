@@ -18,4 +18,4 @@
         </tr>
     </tbody>
 </table>
-<app-location *ngIf="selectedTGM" [transport]=selectedTGM></app-location>
+<app-location *ngIf="selectedTGM" [$transportObs] = "$selectedTGMObs" [transport] = "selectedTGM"></app-location>
