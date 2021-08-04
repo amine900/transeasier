@@ -30,7 +30,7 @@ export class TransportServiceService {
     if (this.sortValue == "seats") {
       transport?.sort((a: Transport, b: Transport) => Number(b.seats.substring(0,2)) - Number(a.seats.substring(0,2)));
     } else {
-      transport?.sort((a: Transport, b: Transport) => Number(a.time.substring(0,2)) - Number(b.time.substring(0,2)));  
+      transport?.sort((a: Transport, b: Transport) => (a.time < b.time) ? -1 : ((a.time > b.time) ? 1 : 0));  
     }
   }
 
