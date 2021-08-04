@@ -8,3 +8,6 @@
 .container-fluid button {
     flex-basis: 90px;
 }
+.sort {
+    min-width: 200px;
+}

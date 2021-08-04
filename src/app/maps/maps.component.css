@@ -90,4 +90,8 @@ body {
     text-transform: capitalize;
     margin-left: 8px;
   }
-  
+  @media screen and (max-width:450px) {
+    .weather {
+      top: 25%;
+    }
+  }

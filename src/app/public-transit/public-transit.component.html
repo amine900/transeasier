@@ -8,21 +8,21 @@
                 <button class="btn btn-outline-success me-3 " type="button " routerLink="./TGM" routerLinkActive="active ">TGM</button>
             </form>
         </nav>
-        <div class="d-flex g-3 mt-3 mb-3 ml-2 align-items-center justify-content-between">
-            <div class="filter d-flex align-items-center col-5">
-                <div class="col-3">
+        <div class="d-flex mt-3 mb-3 ml-2 align-items-center justify-content-between flex-wrap">
+            <div class="filter d-flex align-items-center flex-wrap">
+                <div class="mr-2">
                     <h5>Filter by:</h5>
                 </div>
-                <div class="col-5">
+                <div class="mr-2">
                     <input type="text " class="form-control " placeholder="Location" [(ngModel)]="filteredLocation" (ngModelChange)="onChangeLocation($event)">
                 </div>
-                <div class="col-5">
+                <div>
                     <input type="text " class="form-control " placeholder="Station " [(ngModel)]="filteredStation " (ngModelChange)="onChangeStation($event)">
                 </div>
             </div>
-            <div class="sort d-flex align-items-center col-4 justify-content-end">
-                <h6 class="col-2 m-0 p-0">Sort by:</h6>
-                <select class="form-select col-3" [(ngModel)]="sort" (ngModelChange)="onChangeSort($event)">
+            <div class="sort d-flex align-items-center justify-content-evenly">
+                <h6 class="m-0 p-0 text-start">Sort by:</h6>
+                <select class="form-select w-50" [(ngModel)]="sort" (ngModelChange)="onChangeSort($event)">
                     <option value="time">time</option>
                     <option value="seats">seats</option>
                 </select>
