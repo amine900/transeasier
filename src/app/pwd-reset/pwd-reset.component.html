@@ -12,6 +12,5 @@
             </span>
         </div>
         <button class="btn update" [disabled]="emailVar.invalid" (click)="auth.resetPwd(email)">Submit</button>
-        <p [ngStyle]="{'color': auth.pwdResetMsg == 'password reset email sent'? 'green' : 'red' }" class="msg" class="mt-2">{{auth.pwdResetMsg}}</p>
     </div>
 </div>

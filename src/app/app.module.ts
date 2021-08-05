@@ -14,12 +14,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PwdResetComponent } from './pwd-reset/pwd-reset.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactComponent,
-    CommunityComponent
+    CommunityComponent,
+    PwdResetComponent
   ],
   imports: [
     BrowserModule,

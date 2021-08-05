@@ -13,7 +13,6 @@ export class RegisterComponent implements OnInit {
   constructor(public auth: AuthService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.auth.signUpError = ""
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
