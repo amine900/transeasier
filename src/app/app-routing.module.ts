@@ -1,41 +1,19 @@
 import { CommunityComponent } from './community/community.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
-import { AddressComponent } from './edit-profile/address/address.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { HistoryComponent } from './edit-profile/history/history.component';
-import { NotificationsComponent } from './edit-profile/notifications/notifications.component';
-import { OverviewComponent } from './edit-profile/overview/overview.component';
-import { PasswordComponent } from './edit-profile/password/password.component';
-import { HomeComponent } from './home/home.component';
-import { MapsComponent } from './maps/maps.component';
-import { BusComponent } from './public-transit/bus/bus.component';
-import { MetroComponent } from './public-transit/metro/metro.component';
-import { PublicTransitComponent } from './public-transit/public-transit.component';
-import { TgmComponent } from './public-transit/tgm/tgm.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
-import { LoginComponent } from './sign-in/login/login.component';
-import { RegisterComponent } from './sign-in/register/register.component';
-import { SignInComponent } from './sign-in/sign-in.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path:'maps' , component: MapsComponent },
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+  { path:'maps' , loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
 { path: '', redirectTo: 'home', pathMatch: 'full' },
 { path: 'contact', component: ContactComponent},
-{ path: 'aboutUs', component: AboutUsComponent},
+{ path: 'aboutUs', loadChildren: () => import('./about-us/about-us.module').then(m => m.AboutUsModule)},
 { path: 'community', component: CommunityComponent},
-{ path: 'signIn', component: SignInComponent, children: [{ path: 'login', component: LoginComponent},
-{ path: '', redirectTo: 'login', pathMatch: 'full' },
-{ path: 'register', component: RegisterComponent}]},
-{ path: 'publicTransit', component: PublicTransitComponent, children: [{ path: 'metro', component: MetroComponent},
-{ path: '', redirectTo: 'bus', pathMatch: 'full' },
-{ path: 'bus', component: BusComponent},
-{ path: 'TGM', component: TgmComponent}]},
-{path: "profile", component: EditProfileComponent, canActivate: [AuthGuardGuard], children: [{path: "address", component: AddressComponent}, {path: "history", component:HistoryComponent},
-{path: "Notifications", component:NotificationsComponent}, {path:"password", component:PasswordComponent}, {path: "overview", component:OverviewComponent}, {path: "", redirectTo:"overview", pathMatch:"full"}]}
+{ path: 'signIn', loadChildren: () => import('./sign-in/sign-in.module').then(m => m.SignInModule)},
+{ path: 'publicTransit', loadChildren: () => import('./public-transit/public-transit.module').then(m => m.PublicTransitModule)},
+{path: "profile", loadChildren: () => import('./edit-profile/edit-profile.module').then(m => m.EditProfileModule), canActivate: [AuthGuardGuard]}
 ];
 
 @NgModule({
