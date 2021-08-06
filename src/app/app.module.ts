@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ContactComponent } from './contact/contact.component';
 import { AngularFireModule} from "@angular/fire";
 import { AngularFireDatabaseModule} from "@angular/fire/database";
 import { AngularFirestoreModule} from "@angular/fire/firestore";
@@ -29,7 +28,6 @@ import { NotificationsComponent } from './edit-profile/notifications/notificatio
   declarations: [
     SignInComponent,
     AppComponent,
-    ContactComponent,
     CommunityComponent,
     PwdResetComponent,
     LoginComponent,
