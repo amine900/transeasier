@@ -15,13 +15,31 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PwdResetComponent } from './pwd-reset/pwd-reset.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { LoginComponent } from './sign-in/login/login.component';
+import { RegisterComponent } from './sign-in/register/register.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { OverviewComponent } from './edit-profile/overview/overview.component';
+import { PasswordComponent } from './edit-profile/password/password.component';
+import { AddressComponent } from './edit-profile/address/address.component';
+import { HistoryComponent } from './edit-profile/history/history.component';
+import { NotificationsComponent } from './edit-profile/notifications/notifications.component';
 
 @NgModule({
   declarations: [
+    SignInComponent,
     AppComponent,
     ContactComponent,
     CommunityComponent,
-    PwdResetComponent
+    PwdResetComponent,
+    LoginComponent,
+    RegisterComponent,
+    EditProfileComponent,
+    OverviewComponent,
+    PasswordComponent,
+    AddressComponent,
+    HistoryComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,
