@@ -11,12 +11,13 @@ import { HistoryComponent } from './edit-profile/history/history.component';
 import { NotificationsComponent } from './edit-profile/notifications/notifications.component';
 import { OverviewComponent } from './edit-profile/overview/overview.component';
 import { PasswordComponent } from './edit-profile/password/password.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
   { path:'maps' , loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
 { path: '', redirectTo: 'home', pathMatch: 'full' },
-{ path: 'contact',loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)},
+{ path: 'contact', component: ContactComponent},
 { path: 'aboutUs', loadChildren: () => import('./about-us/about-us.module').then(m => m.AboutUsModule)},
 { path: 'community', component: CommunityComponent},
 { path: 'signIn',component:SignInComponent, children: [{ path: 'login', component: LoginComponent},
