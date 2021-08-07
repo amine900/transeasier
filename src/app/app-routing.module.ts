@@ -1,7 +1,6 @@
 import { CommunityComponent } from './community/community.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactComponent } from './contact/contact.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 import { LoginComponent } from './sign-in/login/login.component';
 import { RegisterComponent } from './sign-in/register/register.component';
@@ -17,14 +16,14 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
   { path:'maps' , loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
 { path: '', redirectTo: 'home', pathMatch: 'full' },
-{ path: 'contact', component: ContactComponent},
+{ path: 'contact',loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)},
 { path: 'aboutUs', loadChildren: () => import('./about-us/about-us.module').then(m => m.AboutUsModule)},
 { path: 'community', component: CommunityComponent},
 { path: 'signIn',component:SignInComponent, children: [{ path: 'login', component: LoginComponent},
 { path: '', redirectTo: 'login', pathMatch: 'full' },
 { path: 'register', component: RegisterComponent}]},
 { path: 'publicTransit', loadChildren: () => import('./public-transit/public-transit.module').then(m => m.PublicTransitModule)},
-{path: "profile", component:EditProfileComponent, children: [{path: "address", component: AddressComponent}, {path: "history", component:HistoryComponent},
+{path: "profile", component:EditProfileComponent, canActivate: [AuthGuardGuard], children: [{path: "address", component: AddressComponent}, {path: "history", component:HistoryComponent},
 {path: "Notifications", component:NotificationsComponent}, {path:"password", component:PasswordComponent}, {path: "overview", component:OverviewComponent}, {path: "", redirectTo:"overview", pathMatch:"full"}]}
 ];
 
