@@ -23,6 +23,7 @@ import { PasswordComponent } from './edit-profile/password/password.component';
 import { AddressComponent } from './edit-profile/address/address.component';
 import { HistoryComponent } from './edit-profile/history/history.component';
 import { NotificationsComponent } from './edit-profile/notifications/notifications.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NotificationsComponent } from './edit-profile/notifications/notificatio
     AddressComponent,
     HistoryComponent,
     NotificationsComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

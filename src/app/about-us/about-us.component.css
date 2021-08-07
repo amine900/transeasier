@@ -1,40 +1,40 @@
 /* about us */
 
 .title {
-    background-image: url("https://www.klaviyo.com/wp-content/uploads/2016/09/abstract-background-1024x273.jpg");
-    color: whitesmoke;
-    text-align: center;
-    padding: 24px 0;
+  background-image: url("https://www.klaviyo.com/wp-content/uploads/2016/09/abstract-background-1024x273.jpg");
+  color: whitesmoke;
+  text-align: center;
+  padding: 24px 0;
 }
 
 .about-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 50px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 50px 0;
 }
 
 .about-text {
-    width: 500px;
+  width: 500px;
 }
 
 .about-text h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
 }
 
 .team-img {
-    min-height: 100px;
-    max-height: 400px;
+  min-height: 100px;
+  max-height: 400px;
 }
 
 .card-img-top {
-    margin: 10px;
-    height: 50px;
-    width: 50px;
+  margin: 10px;
+  height: 50px;
+  width: 50px;
 }
 @media (max-width: 992px) {
-    .team-img {
-        display: none;
-    }
+  .team-img {
+      display: none;
+  }
 }
