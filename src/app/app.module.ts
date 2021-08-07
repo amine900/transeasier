@@ -24,6 +24,7 @@ import { AddressComponent } from './edit-profile/address/address.component';
 import { HistoryComponent } from './edit-profile/history/history.component';
 import { NotificationsComponent } from './edit-profile/notifications/notifications.component';
 import { TestComponent } from './test/test.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TestComponent } from './test/test.component';
     AddressComponent,
     HistoryComponent,
     NotificationsComponent,
-    TestComponent
+    TestComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
