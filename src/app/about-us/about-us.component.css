@@ -5,6 +5,9 @@
     color: whitesmoke;
     text-align: center;
     padding: 24px 0;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .about-container {
