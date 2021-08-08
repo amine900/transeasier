@@ -7,7 +7,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  durationInSeconds = 5;
   constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
