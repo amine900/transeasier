@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
-import { interval, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Transport } from '../model/transport';
 

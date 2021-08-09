@@ -13,9 +13,17 @@
             <tr *ngFor="let bus of busService.filteredBuses">
                 <th scope="row">{{bus.name}}</th>
                 <td class="text-info" (click)="selectBus(bus)">{{bus.locationAddress}}</td>
-                <td>{{bus.station}}</td>
+                <td>
+                    <a data-bs-toggle="collapse" href="#{{bus.id}}" aria-expanded="false" aria-controls="collapseExample">
+                        {{bus.station}}
+                    </a>
+                    <div class="collapse" id="{{bus.id}}">
+                        <app-station></app-station>
+                    </div>
+                </td>
                 <td>{{bus.time}}</td>
                 <td>{{bus.seats}}</td>
+
             </tr>
     
         </tbody>
