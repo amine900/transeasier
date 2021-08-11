@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Transport } from '../model/transport';
 import { TransportServiceService } from '../transport-service.service';
 
@@ -11,7 +11,8 @@ import { TransportServiceService } from '../transport-service.service';
 })
 export class MetroComponent implements OnInit {
   selectedMetro: Transport;
-  $selectedMetroObs: Observable<Transport>;
+  $selectedMetroObs: any;
+  selectedStation: string = "";
   constructor(public metroService: TransportServiceService) {
     
    }
@@ -20,7 +21,13 @@ export class MetroComponent implements OnInit {
     this.getAllmetros()
   }
   getAllmetros(){
-    this.metroService.getAll("metros").valueChanges({idField: "id"}).subscribe(
+    this.metroService.getAll("metros").snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(
       rs => {
         rs.forEach(transport => {this.metroService.reverseGeocoding(transport).subscribe(data => {
           transport.locationAddress = data["features"][0].place_name
@@ -32,7 +39,10 @@ export class MetroComponent implements OnInit {
     )
   }
   selectMetro(Metro: Transport) {
-    this.$selectedMetroObs = this.metroService.getAll("metros").doc(Metro.id).valueChanges()
+    this.$selectedMetroObs = this.metroService.getObj("/metros/" + Metro.key).valueChanges()
     this.selectedMetro = Metro
+  }
+  selectStation(station:string) {
+    this.selectedStation = station;
   }
 }

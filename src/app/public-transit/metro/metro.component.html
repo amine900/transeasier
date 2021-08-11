@@ -9,11 +9,18 @@
                 <th scope="col">Available Seats</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody  id="infos">
             <tr *ngFor="let metro of metroService.filteredMetros">
-                <th scope="row">{{metro.name}}</th>
+                <th scope="row">{{metro.key}}</th>
                 <td class="text-info" (click)="selectMetro(metro)">{{metro.locationAddress}}</td>
-                <td>{{metro.station}}</td>
+                <td>
+                    <a (click)="selectStation(metro.station)" data-bs-toggle="collapse" href="#{{metro.key}}" aria-expanded="false" aria-controls="collapseExample">
+                        {{metro.station}}
+                    </a>
+                    <div class="collapse" id="{{metro.key}}" data-bs-parent="#infos">
+                        <app-station [station] = "selectedStation"></app-station>
+                    </div>
+                </td>
                 <td>{{metro.time}}</td>
                 <td>{{metro.seats}}</td>
             </tr>

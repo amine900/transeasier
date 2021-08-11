@@ -6,17 +6,9 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">5</th>
-            <td>17:50 pm</td>
-        </tr>
-        <tr>
-            <th scope="row">5</th>
-            <td>17:50 pm</td>
-        </tr>
-        <tr>
-            <th scope="row">5</th>
-            <td>17:50 pm</td>
+        <tr *ngFor="let item of timetable | keyvalue">
+            <th scope="row">{{item.key}}</th>
+            <td>{{item.value}}</td>
         </tr>
 
     </tbody>

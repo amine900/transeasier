@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Transport } from '../model/transport';
 import { TransportServiceService } from '../transport-service.service';
 
@@ -9,8 +9,9 @@ import { TransportServiceService } from '../transport-service.service';
   styleUrls: ['./bus.component.css']
 })
 export class BusComponent implements OnInit {
-  $selectedBusObs: Observable<Transport>
-  selectedBus: Transport
+  $selectedBusObs: any;
+  selectedBus: Transport;
+  selectedStation: string = "";
   constructor(public busService: TransportServiceService) {
     
   }
@@ -19,20 +20,29 @@ export class BusComponent implements OnInit {
    this.getAllBuses()
  }
  getAllBuses(){
-   this.busService.getAll("bus").valueChanges({idField: "id"}).subscribe(
+   this.busService.getAll("buses").snapshotChanges().pipe(
+    map(changes =>
+      changes.map(c =>
+        ({ key: c.payload.key, ...c.payload.val() })
+      )
+    )
+  ).subscribe(
      rs => {
        rs.forEach(transport => {this.busService.reverseGeocoding(transport).subscribe(data => {
         transport.locationAddress = data["features"][0].place_name
         this.busService.buses = this.busService.filteredBuses = rs
         this.busService.sortTrans(this.busService.buses);
         this.busService.filteredBuses = this.busService.filterTrans(rs)
+        console.log(this.busService.filteredBuses)
       })})
-       console.log(rs)
      }
    )
  }
  selectBus(Bus: Transport) {
-   this.$selectedBusObs = this.busService.getAll("bus").doc(Bus.id).valueChanges()
+   this.$selectedBusObs = this.busService.getObj("/buses/" + Bus.key).valueChanges()
    this.selectedBus = Bus
+ }
+ selectStation(station:string) {
+   this.selectedStation = station;
  }
 }

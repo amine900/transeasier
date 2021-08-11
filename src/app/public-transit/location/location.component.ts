@@ -11,7 +11,7 @@ import { Transport } from '../model/transport';
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
-  @Input() $transportObs: Observable<Transport>
+  @Input() $transportObs: Observable<Transport>;
   @Input() transport: Transport;
   map: mapboxgl.Map;
   apiKey:string = 'ba00310406973fbac95e4965e6613d04';
@@ -29,6 +29,7 @@ export class LocationComponent implements OnInit {
   constructor() { }
   ngOnChanges(): void {
     this.$transportObs.subscribe(t => {
+      console.log(t)
       this.stationCoords = t.stationCoords.split(",").map(x => Number(x));
       this.stationCoords = new mapboxgl.LngLat(this.stationCoords[0], this.stationCoords[1]);
       this.locationCoords = t.location.split(",").map(x => Number(x));
@@ -51,7 +52,6 @@ export class LocationComponent implements OnInit {
       center: this.center,
       zoom: 13,
     });
-    console.log(1)
     this.busText = new mapboxgl.Popup()
       .setText("bus")
       .addTo(this.map);

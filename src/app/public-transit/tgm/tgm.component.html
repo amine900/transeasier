@@ -9,11 +9,18 @@
                 <th scope="col">Available Seats</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="infos">
             <tr *ngFor="let TGM of TGMservice.filteredTGM">
-                <th scope="row">{{TGM.name}}</th>
+                <th scope="row">{{TGM.key}}</th>
                 <td class="text-info" (click)="selectTGM(TGM)">{{TGM.locationAddress}}</td>
-                <td>{{TGM.station}}</td>
+                <td>
+                    <a (click)="selectStation(TGM.station)" data-bs-toggle="collapse" href="#{{TGM.key}}" aria-expanded="false" aria-controls="collapseExample">
+                        {{TGM.station}}
+                    </a>
+                    <div class="collapse" id="{{TGM.key}}" data-bs-parent="#infos">
+                        <app-station [station] = "selectedStation"></app-station>
+                    </div>
+                </td>
                 <td>{{TGM.time}}</td>
                 <td>{{TGM.seats}}</td>
             </tr>
