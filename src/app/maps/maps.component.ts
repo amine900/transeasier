@@ -32,7 +32,7 @@ export class MapsComponent implements OnInit {
     }
     (mapboxgl as any).accessToken = environment.mapboxKey;
     this.map = new mapboxgl.Map({
-      container: 'map',
+      container: 'map-container',
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [10.16579, 36.81897],
       zoom: 13,
