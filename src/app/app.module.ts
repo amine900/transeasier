@@ -9,50 +9,27 @@ import { AngularFireDatabaseModule} from "@angular/fire/database";
 import { AngularFirestoreModule} from "@angular/fire/firestore";
 import { AngularFireAuthModule} from "@angular/fire/auth";
 import { environment } from 'src/environments/environment';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { PwdResetComponent } from './pwd-reset/pwd-reset.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { LoginComponent } from './sign-in/login/login.component';
-import { RegisterComponent } from './sign-in/register/register.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { OverviewComponent } from './edit-profile/overview/overview.component';
-import { PasswordComponent } from './edit-profile/password/password.component';
-import { AddressComponent } from './edit-profile/address/address.component';
-import { HistoryComponent } from './edit-profile/history/history.component';
-import { NotificationsComponent } from './edit-profile/notifications/notifications.component';
-import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
-    SignInComponent,
     AppComponent,
     CommunityComponent,
-    PwdResetComponent,
-    LoginComponent,
-    RegisterComponent,
-    EditProfileComponent,
-    OverviewComponent,
-    PasswordComponent,
-    AddressComponent,
-    HistoryComponent,
-    NotificationsComponent,
-    ContactComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    CommonModule,
     NgbModule,
-    FormsModule,
-    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    BrowserModule,
     MatSnackBarModule
   ],
   providers: [],
