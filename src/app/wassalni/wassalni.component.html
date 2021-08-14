@@ -4,11 +4,23 @@
     </div>
     <form class="d-flex align-items-center form-container flex-wrap">
         <div class="form-floating col-sm-3 p-0">
-            <input type="text" class="form-control" id="floatingLocation" placeholder="from">
+            <input type="text" class="form-control" id="floatingLocation" placeholder="from" [formControl]="locationInput"
+            [matAutocomplete]="autoloc">
+            <mat-autocomplete autoActiveFirstOption #autoloc="matAutocomplete">
+                <mat-option *ngFor="let option of filteredLocations | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
             <label for="floatingLocation">from</label>
         </div>
         <div class="form-floating col-sm-3 p-0">
-            <input type="text" class="form-control" id="floatingLocation" placeholder="to">
+            <input type="text" class="form-control" id="floatingLocation" placeholder="to"[formControl]="destinationInput"
+            [matAutocomplete]="autodest">
+            <mat-autocomplete autoActiveFirstOption #autodest="matAutocomplete">
+                <mat-option *ngFor="let option of filteredDestinations | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
             <label for="floatingLocation">to</label>
         </div>
         <div class="col-sm-3 p-0">
@@ -29,7 +41,7 @@
             <label for="passengers">passengers</label>
         </div>
         <div class="d-flex justify-content-end w-100 mt-2">
-            <button type="button" class="mr-2" mat-raised-button><i class="fa fa-plus"></i> offer a ride</button>
+            <button type="button" class="mr-2" mat-raised-button (click)="Dialog.openDialog(rideofferComponentRef)"><i class="fa fa-plus"></i> offer a ride</button>
             <button mat-raised-button type="button" color="primary"><i class="fa fa-search"></i> find a ride</button>
         </div>
     </form>

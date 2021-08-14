@@ -13,16 +13,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RideOfferComponent } from './components/ride-offer/ride-offer.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CommunityComponent
+    CommunityComponent,
+    RideOfferComponent
   ],
   imports: [
     AppRoutingModule,
     CommonModule,
     NgbModule,
+    MatDialogModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
