@@ -3,24 +3,25 @@ import { CommonModule } from '@angular/common';
 import { WassalniComponent } from './wassalni.component';
 import { RouterModule } from '@angular/router';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import { RideOfferComponent } from '../components/ride-offer/ride-offer.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
   declarations: [
-    WassalniComponent
+    WassalniComponent,
+    RideOfferComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     MatDatepickerModule,
-    MatNativeDateModule,
     MatButtonModule,
+    MatDialogModule,
     MatAutocompleteModule,
     RouterModule.forChild([{path:"", component: WassalniComponent}])
   ]

@@ -1,1 +1,53 @@
-<p>ride-offer works!</p>
+<h2 mat-dialog-title>Ride Offer</h2>
+<form class="row g-3">
+  <div class="form-floating col-md-6">
+    <input type="text" class="form-control" id="floatingDeparture" placeholder="enter a location" [formControl]="departureInput"
+    [matAutocomplete]="autodepart">
+    <mat-autocomplete autoActiveFirstOption #autodepart="matAutocomplete">
+        <mat-option *ngFor="let option of filteredDepartures | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    <label for="floatingDeparture" class="pl-4">Depparture location</label>
+  </div>
+  <div class="col-md-6 form-floating">
+    <input type="text" class="form-control" id="Arrival" placeholder="enter a location" [formControl]="arrivalInput"
+    [matAutocomplete]="autoarrival">
+    <mat-autocomplete autoActiveFirstOption #autoarrival="matAutocomplete">
+        <mat-option *ngFor="let option of filteredArrivals | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    <label for="Arrival" class="pl-4">Arrival location</label>
+  </div>
+  <div class="form-floating col-md-6">
+    <input type="number" class="form-control" id="seats" placeholder="1">
+    <label for="seats" class="pl-4">number of seats</label>
+  </div>
+  <div class="form-floating input-group col-md-6">
+    <input type="number" class="form-control" placeholder="price" aria-label="price" aria-describedby="basic-addon1">
+    <label for="price" class="pl-4">price</label>
+    <div class="input-group-append">
+      <span class="input-group-text" id="basic-addon1">TND</span>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="input-group form-floating">
+        <input matInput [matDatepicker]="datepicker" type="text" class="form-control" id="date" placeholder="mm-dd-yyyy">
+        <mat-datepicker-toggle class="input-group-text" matSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <label for="date">Departure Date</label>
+    </div>
+    <mat-datepicker #datepicker>
+        <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+        </mat-datepicker-actions>
+    </mat-datepicker>
+  </div>
+  <div class="col-md-6">
+    <input class="timeInput" type="time">
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Submit</button>
+  </mat-dialog-actions>
