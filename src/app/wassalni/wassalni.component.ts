@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { AutocompleteService } from '../services/autocomplete.service';
@@ -12,25 +12,32 @@ import { DialogService } from '../services/dialog.service';
   styleUrls: ['./wassalni.component.css']
 })
 export class WassalniComponent implements OnInit {
-  locationInput = new FormControl();
-  destinationInput = new FormControl();
+  findRide: FormGroup;
   filteredLocations: Observable<string[]>;
   filteredDestinations: Observable<string[]>;
   rideofferComponentRef = RideOfferComponent;
-  constructor(private autocompleteService:AutocompleteService, public Dialog: DialogService) { }
+  showRides:boolean;
+  constructor(private autocompleteService:AutocompleteService, private fb:FormBuilder, public Dialog: DialogService) { }
 
   ngOnInit(): void {
-    this.filterOptions(this.locationInput)
-    this.filterOptions(this.destinationInput)
+    this.showRides = false
+    this.findRide = this.fb.group({
+      from: '',
+      to: '',
+      passengers: 1,
+      departureDate: new Date(),
+    });
+    this.filterOptions(this.findRide.get("from"));
+    this.filterOptions(this.findRide.get("to"));
   }
-  filterOptions (form:FormControl){
-    if (form === this.locationInput) {
-      this.filteredLocations = this.locationInput.valueChanges.pipe(
+  filterOptions (formControl){
+    if (formControl === this.findRide.get("from")) {
+      this.filteredLocations = this.findRide.get("from").valueChanges.pipe(
         startWith(''),
         map((value) => this.autocompleteService._filter(value))
       );
     } else {
-      this.filteredDestinations = this.destinationInput.valueChanges.pipe(
+      this.filteredDestinations = this.findRide.get("to").valueChanges.pipe(
         startWith(''),
         map((value) => this.autocompleteService._filter(value))
       );

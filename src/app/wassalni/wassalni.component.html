@@ -2,9 +2,9 @@
     <div>
         <h2 class="title">changalni matchanglnich</h2>
     </div>
-    <form class="d-flex align-items-center form-container flex-wrap">
+    <form [formGroup]="findRide" class="d-flex align-items-center form-container flex-wrap">
         <div class="form-floating col-sm-3 p-0">
-            <input type="text" class="form-control" id="floatingLocation" placeholder="from" [formControl]="locationInput"
+            <input type="text" class="form-control" id="floatingLocation" placeholder="from" formControlName="from"
             [matAutocomplete]="autoloc">
             <mat-autocomplete autoActiveFirstOption #autoloc="matAutocomplete">
                 <mat-option *ngFor="let option of filteredLocations | async" [value]="option">
@@ -14,7 +14,7 @@
             <label for="floatingLocation">from</label>
         </div>
         <div class="form-floating col-sm-3 p-0">
-            <input type="text" class="form-control" id="floatingLocation" placeholder="to" [formControl]="destinationInput"
+            <input type="text" class="form-control" id="floatingLocation" placeholder="to" formControlName="to"
             [matAutocomplete]="autodest">
             <mat-autocomplete autoActiveFirstOption #autodest="matAutocomplete">
                 <mat-option *ngFor="let option of filteredDestinations | async" [value]="option">
@@ -25,7 +25,7 @@
         </div>
         <div class="col-sm-3 p-0">
             <div class="input-group form-floating">
-                <input matInput [matDatepicker]="datepicker" type="text" class="form-control" id="date" placeholder="mm-dd-yyyy">
+                <input matInput [matDatepicker]="datepicker" type="text" class="form-control" id="date" placeholder="mm-dd-yyyy" formControlName="departureDate">
                 <mat-datepicker-toggle class="input-group-text" matSuffix [for]="datepicker"></mat-datepicker-toggle>
                 <label for="date">choose a date</label>
             </div>
@@ -37,15 +37,15 @@
             </mat-datepicker>
         </div>
         <div class="form-floating col-sm-3 p-0">
-            <input type="number" class="form-control" id="passengers" placeholder="passengers" min=1>
+            <input type="number" class="form-control" id="passengers" placeholder="passengers" min=1 formControlName="passengers">
             <label for="passengers">passengers</label>
         </div>
         <div class="d-flex justify-content-end w-100 mt-2">
             <button type="button" class="mr-2" mat-raised-button (click)="Dialog.openDialog(rideofferComponentRef)"><i class="fa fa-plus"></i> offer a ride</button>
-            <a (click)="element.scrollIntoView({ behavior: 'smooth', block: 'end' })"><button mat-raised-button type="button" color="primary"><i class="fa fa-search"></i> find a ride</button></a>
+            <a (click)="element.scrollIntoView({ behavior: 'smooth'}); showRides = true"><button mat-raised-button type="button" color="primary"><i class="fa fa-search"></i> find a ride</button></a>
         </div>
     </form>
 </section>
 <div class="rideSearch" #element>
-<app-ride-search ></app-ride-search>
+<app-ride-search *ngIf="showRides" [departure] = "findRide.get('from').value" [arrival] = "findRide.get('to').value" [seats] = "findRide.get('passengers').value" [date] = "findRide.get('departureDate').value"></app-ride-search>
 </div>

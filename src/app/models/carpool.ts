@@ -1,3 +1,5 @@
+import { User } from "./user.model";
+
 export class Carpool {
     key: string;
     departure: string;
@@ -7,4 +9,5 @@ export class Carpool {
     price: number;
     seats: number;
     user_id: string;
+    user?: User
 }

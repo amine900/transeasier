@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common'
 import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -20,7 +21,7 @@ export class RideOfferComponent implements OnInit {
   filteredDepartures: Observable<string[]>;
   filteredArrivals: Observable<string[]>;
   rideofferComponentRef = RideOfferComponent;
-  constructor(private autocompleteService:AutocompleteService, public Dialog: DialogService, private fb: FormBuilder, private carpoolService: CarpoolService, private snackbarService: SnackbarService) { }
+  constructor(private datepipe:DatePipe, private autocompleteService:AutocompleteService, public Dialog: DialogService, private fb: FormBuilder, private carpoolService: CarpoolService, private snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
     this.addRide = this.fb.group({
@@ -52,6 +53,7 @@ export class RideOfferComponent implements OnInit {
     this.ride.departure = this.addRide.get("departure").value
     this.ride.time = this.addRide.get("time").value
     this.ride.date = this.addRide.get("date").value
+    this.ride.date = this.datepipe.transform(this.ride.date, 'dd/MM');
     this.ride.price = this.addRide.get("price").value
     this.ride.seats = this.addRide.get("seats").value
     this.ride.user_id = firebase.auth().currentUser.uid

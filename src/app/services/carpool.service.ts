@@ -11,6 +11,9 @@ export class CarpoolService {
   constructor(private db: AngularFireDatabase) { 
     this.carpoolRef = this.db.list(this.path);
   }
+  getRides():AngularFireList<Carpool> {
+    return this.carpoolRef
+  }
   create(ride: Carpool) {
     return this.carpoolRef.push(ride);
   }
