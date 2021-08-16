@@ -12,6 +12,12 @@ export class StationComponent implements OnChanges {
   constructor(private stationService:TransportServiceService) { }
 
   ngOnChanges(): void {
-    this.stationService.getObj("/stations/" + this.station).valueChanges().subscribe(t => {this.timetable = t})
-  }
+    this.stationService
+      .getObj('/stations/' + this.station)
+      .valueChanges()
+      .subscribe((t) => {
+        this.timetable = Object.entries(t)
+        .sort((a, b) => a[1] < b[1] ? -1 : a[1] > b[1] ? 1 : 0)
+  })
+}
 }

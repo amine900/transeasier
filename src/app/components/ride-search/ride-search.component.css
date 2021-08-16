@@ -1,0 +1,131 @@
+.cards-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.card {
+  position: relative;
+  display: inline-flex;
+  width: 400px;
+  height: 200px;
+  background: #ffffff;
+  box-shadow: 2px 2px 9px 4px rgba(192, 128, 128, 0.25);
+  border-radius: 27px;
+}
+.price {
+  position: absolute;
+  width: 67px;
+  height: 28px;
+  right: 20px;
+  top: 15px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+}
+.general {
+    position: absolute;
+    width: 250px;
+    height: 78px;
+    left: 20px;
+    top: 35px;
+}
+.seats {
+    position: absolute;
+    font-family: 'Roboto';
+    top: 115px;
+    right: 20px;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+}
+hr {
+    position: absolute;
+    top: 135px;
+    height: 0.3px;
+    width: 95%;
+    left: 0;
+right: 0;
+margin: auto
+}
+.driver {
+    position: absolute;
+width: 133px;
+height: 42px;
+top: 143px;
+left: 30px;
+}
+.pfp {
+    width: 50px;
+height: 50px;
+border-radius: 100%;
+object-fit: contain;
+}
+.name {
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 21px;
+}
+.time {
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 21px;
+}
+.date {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+}
+.circle1 {
+    position: absolute;
+width: 20px;
+height: 20px;
+top: 0;
+border-radius: 100%;
+background: #FFFFFF;
+border: 3px solid #45F2DD;
+box-sizing: border-box;
+}
+.line {
+    position: absolute;
+    width: 45px;
+    height: 4px;
+    left: 50.2px;
+    top: 40px;
+    background-color: #45F2DD;
+    transform: rotate(
+-90deg
+);
+}
+.circle2 {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+    left: 63px;
+    border-radius: 100%;
+    background: #45F2DD;
+}
+.trajectory {
+    position: relative;
+    left: 22px;
+    text-align: left;
+    color: #00A3FF;
+}
+.departure {
+    margin-bottom: 30px;
+}
+.contact {
+    position: absolute;
+    width: 120px;
+    bottom: 15px;
+    right: 10px;
+}

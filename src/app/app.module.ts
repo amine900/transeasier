@@ -22,7 +22,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
-    CommunityComponent,
+    CommunityComponent
   ],
   imports: [
     AppRoutingModule,

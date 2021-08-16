@@ -8,7 +8,7 @@
 }
 .title {
     color: #46d89f;
-    font-size: 4em;
+    font-size: 3em;
     font-family: 'Lato' , sans-serif;
     font-weight: 700;
     text-align: center;
@@ -17,4 +17,8 @@
 }
 .form-container {
     width: 80%;
+}
+.rideSearch {
+    max-height: 80vh;
+    overflow: auto;
 }

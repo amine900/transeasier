@@ -8,12 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { RideOfferComponent } from '../components/ride-offer/ride-offer.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RideSearchComponent } from '../components/ride-search/ride-search.component';
 
 
 @NgModule({
   declarations: [
     WassalniComponent,
-    RideOfferComponent
+    RideOfferComponent,
+    RideSearchComponent
   ],
   imports: [
     CommonModule,
