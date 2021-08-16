@@ -13,7 +13,8 @@ const routes: Routes = [
 { path: 'community', component: CommunityComponent},
 { path: 'signIn', loadChildren: () => import('./sign-in/sign-in.module').then(m => m.SignInModule)},
 { path: 'publicTransit', loadChildren: () => import('./public-transit/public-transit.module').then(m => m.PublicTransitModule)},
-{path: "profile", loadChildren: () => import('./edit-profile/edit-profile.module').then(m => m.EditProfileModule), canActivate: [AuthGuardGuard]}
+{path: "profile", loadChildren: () => import('./edit-profile/edit-profile.module').then(m => m.EditProfileModule), canActivate: [AuthGuardGuard]},
+  { path: 'changalni', loadChildren: () => import('./changalni/changalni.module').then(m => m.ChangalniModule) }
 ];
 
 @NgModule({
