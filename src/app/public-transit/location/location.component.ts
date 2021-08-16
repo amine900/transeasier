@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Transport } from '../model/transport';
+import { Transport } from '../../models/transport';
 
 
 @Component({

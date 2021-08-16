@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Transport } from './model/transport';
+import { Transport } from '../models/transport';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class TransportServiceService {
   }
   filterTrans(transport: Transport[]): Transport[] {
     return transport?.filter((mean: Transport) => 
-    mean.locationAddress?.toLowerCase().includes(this.location.toLowerCase()) && mean.station.includes(this.station.toLowerCase()));
+    mean.locationAddress?.toLowerCase().includes(this.location.toLowerCase()) && mean.station?.includes(this.station.toLowerCase()));
   }
   sortTrans(transport: Transport[]): void {
     if (this.sortValue == "seats") {

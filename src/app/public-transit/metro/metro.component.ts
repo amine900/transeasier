@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Transport } from '../model/transport';
+import { Transport } from '../../models/transport';
 import { TransportServiceService } from '../transport-service.service';
 
 @Component({
