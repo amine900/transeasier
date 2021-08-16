@@ -1,0 +1,24 @@
+.request-container {
+    background-image: url(https://i.pinimg.com/originals/71/5c/4e/715c4e2bfc9db0f490736d9d70aad3a1.gif);
+    width: 100%;
+    height: 89vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.title {
+    color: #46d89f;
+    font-size: 3em;
+    font-family: 'Lato' , sans-serif;
+    font-weight: 700;
+    text-align: center;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;    
+}
+.form-container {
+    width: 80%;
+}
+.rideSearch {
+    max-height: 80vh;
+    overflow: auto;
+}

@@ -1,0 +1,51 @@
+<section class="request-container d-flex flex-column justify-content-evenly align-items-center">
+    <div>
+        <h2 class="title">changalni matchanglnich</h2>
+    </div>
+    <form [formGroup]="findRide" class="d-flex align-items-center form-container flex-wrap">
+        <div class="form-floating col-sm-3 p-0">
+            <input type="text" class="form-control" id="floatingLocation" placeholder="from" formControlName="from"
+            [matAutocomplete]="autoloc">
+            <mat-autocomplete autoActiveFirstOption #autoloc="matAutocomplete">
+                <mat-option *ngFor="let option of filteredLocations | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            <label for="floatingLocation">from</label>
+        </div>
+        <div class="form-floating col-sm-3 p-0">
+            <input type="text" class="form-control" id="floatingLocation" placeholder="to" formControlName="to"
+            [matAutocomplete]="autodest">
+            <mat-autocomplete autoActiveFirstOption #autodest="matAutocomplete">
+                <mat-option *ngFor="let option of filteredDestinations | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            <label for="floatingLocation">to</label>
+        </div>
+        <div class="col-sm-3 p-0">
+            <div class="input-group form-floating">
+                <input matInput [matDatepicker]="datepicker" type="text" class="form-control" id="date" placeholder="mm-dd-yyyy" formControlName="departureDate">
+                <mat-datepicker-toggle class="input-group-text" matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <label for="date">choose a date</label>
+            </div>
+            <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+            </mat-datepicker>
+        </div>
+        <div class="form-floating col-sm-3 p-0">
+            <input type="number" class="form-control" id="passengers" placeholder="passengers" min=1 formControlName="passengers">
+            <label for="passengers">passengers</label>
+        </div>
+        <div class="d-flex justify-content-end w-100 mt-2">
+            <button type="button" class="mr-2" mat-raised-button (click)="Dialog.openDialog(rideofferComponentRef)"><i class="fa fa-plus"></i> offer a ride</button>
+            <a (click)="element.scrollIntoView({ behavior: 'smooth'}); showRides = true"><button mat-raised-button type="button" color="primary"><i class="fa fa-search"></i> find a ride</button></a>
+        </div>
+    </form>
+</section>
+<div class="rideSearch" #element>
+<app-ride-search *ngIf="showRides" [departure] = "findRide.get('from').value" [arrival] = "findRide.get('to').value" [seats] = "findRide.get('passengers').value" [date] = "findRide.get('departureDate').value"></app-ride-search>
+</div>

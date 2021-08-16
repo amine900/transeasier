@@ -1,0 +1,32 @@
+<div class="cards-container">
+    <div class="card m-2" *ngFor="let ride of filteredRides">
+        <h3 class="price">{{ride.price}} TND</h3>
+        <div class="general d-flex justify-content-between align-items-center">
+            <div class="date-container text-center">
+                <h5 class="time m-0">{{ride.time}}</h5>
+                <h6 class="date m-0">{{ride.date}}</h6>
+            </div>
+            <div class="path w-75">
+                <div class="location-symbol">
+                    <div class="circle1">
+                    </div>
+                    <div class="line"></div>
+                    <div class="circle2"></div>
+                </div>
+                <div class="trajectory">
+                    <h5 class="departure mt-0 ml-0 mr-0">{{ride.departure}}</h5>
+                    <h5 class="destination m-0">{{ride.arrival}}</h5>
+                </div>
+            </div>
+        </div>
+        <p class="seats m-0">availabe seats: {{ride.seats}}</p>
+        <hr>
+        <div class="driver d-flex align-items-center">
+            <div>
+                <img class="pfp mr-2" [src]="ride.user?.photoURL" alt="pfp">
+            </div>
+            <h5 class="m-0">{{ride.user?.firstName | titlecase}}</h5>
+        </div>
+        <button mat-raised-button color="warn" class="contact">Contact driver</button>
+    </div>
+</div>

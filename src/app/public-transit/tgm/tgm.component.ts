@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Transport } from '../model/transport';
+import { map } from 'rxjs/operators';
+import { Transport } from '../../models/transport';
 import { TransportServiceService } from '../transport-service.service';
 
 @Component({
@@ -10,7 +10,8 @@ import { TransportServiceService } from '../transport-service.service';
 })
 export class TgmComponent implements OnInit {
   selectedTGM: Transport;
-  $selectedTGMObs: Observable<Transport>;
+  $selectedTGMObs: any;
+  selectedStation: string = "";
   constructor(public TGMservice: TransportServiceService) {
     
   }
@@ -19,7 +20,13 @@ export class TgmComponent implements OnInit {
    this.getAllTGM()
  }
  getAllTGM(){
-   this.TGMservice.getAll("TGM").valueChanges({idField: "id"}).subscribe(
+   this.TGMservice.getAll("TGM").snapshotChanges().pipe(
+    map(changes =>
+      changes.map(c =>
+        ({ key: c.payload.key, ...c.payload.val() })
+      )
+    )
+  ).subscribe(
      rs => {
       rs.forEach(transport => {this.TGMservice.reverseGeocoding(transport).subscribe(data => {
         transport.locationAddress = data["features"][0].place_name
@@ -31,7 +38,10 @@ export class TgmComponent implements OnInit {
    )
  }
  selectTGM(TGM: Transport) {
-  this.$selectedTGMObs = this.TGMservice.getAll("TGM").doc(TGM.id).valueChanges()
+  this.$selectedTGMObs = this.TGMservice.getObj("/TGM/" + TGM.key).valueChanges()
   this.selectedTGM = TGM
+}
+selectStation(station:string) {
+  this.selectedStation = station;
 }
 }

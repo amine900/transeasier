@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Transport } from './model/transport';
+import { Transport } from '../models/transport';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -17,18 +17,21 @@ export class TransportServiceService {
   TGMlist:Transport[];
   filteredTGM: Transport[];
   sortValue: String = "time"
-  constructor(private db: AngularFirestore, private http: HttpClient) {
+  constructor(private db: AngularFireDatabase, private http: HttpClient) {
   }
-  getAll(path: string):AngularFirestoreCollection<Transport> {
-    return this.db.collection(path)
+  getAll(path: string):AngularFireList<Transport> {
+    return this.db.list(path)
+  }
+  getObj(path: string): any {
+    return this.db.object(path)
   }
   filterTrans(transport: Transport[]): Transport[] {
     return transport?.filter((mean: Transport) => 
-    mean.locationAddress?.toLowerCase().includes(this.location.toLowerCase()) && mean.station.includes(this.station.toLowerCase()));
+    mean.locationAddress?.toLowerCase().includes(this.location.toLowerCase()) && mean.station?.includes(this.station.toLowerCase()));
   }
   sortTrans(transport: Transport[]): void {
     if (this.sortValue == "seats") {
-      transport?.sort((a: Transport, b: Transport) => Number(b.seats.substring(0,2)) - Number(a.seats.substring(0,2)));
+      transport?.sort((a: Transport, b: Transport) => Number(b.seats) - Number(a.seats));
     } else {
       transport?.sort((a: Transport, b: Transport) => (a.time < b.time) ? -1 : ((a.time > b.time) ? 1 : 0));  
     }

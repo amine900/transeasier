@@ -7,6 +7,7 @@ import { MetroComponent } from './metro/metro.component';
 import { BusComponent } from './bus/bus.component';
 import { TgmComponent } from './tgm/tgm.component';
 import { LocationComponent } from './location/location.component';
+import { StationComponent } from './station/station.component';
 
 
 
@@ -16,7 +17,8 @@ import { LocationComponent } from './location/location.component';
     MetroComponent,
     TgmComponent,
     BusComponent,
-    LocationComponent
+    LocationComponent,
+    StationComponent
   ],
   imports: [
     CommonModule,

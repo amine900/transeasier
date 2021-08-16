@@ -1,10 +1,13 @@
 /* about us */
 
 .title {
-  background-image: url("https://www.klaviyo.com/wp-content/uploads/2016/09/abstract-background-1024x273.jpg");
-  color: whitesmoke;
-  text-align: center;
-  padding: 24px 0;
+    background-image: url("https://www.klaviyo.com/wp-content/uploads/2016/09/abstract-background-1024x273.jpg");
+    color: whitesmoke;
+    text-align: center;
+    padding: 24px 0;
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .about-container {

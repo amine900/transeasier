@@ -1,0 +1,15 @@
+<table class="table table-secondary">
+    <thead>
+        <tr>
+            <th scope="col">Bus</th>
+            <th scope="col">Arrival</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of timetable">
+            <th scope="row">{{item[0]}}</th>
+            <td>{{item[1]}}</td>
+        </tr>
+
+    </tbody>
+</table>

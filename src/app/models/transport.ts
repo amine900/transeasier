@@ -1,6 +1,5 @@
 export class Transport {
-    id: string;
-    name:number;
+    key: string;
     location: string;
     station: string;
     time: string;

@@ -1,22 +1,33 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Bus</th>
-            <th scope="col">Current Location</th>
-            <th scope="col">Next Station</th>
-            <th scope="col">Arrival time</th>
-            <th scope="col">Available Seats</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let bus of busService.filteredBuses">
-            <th scope="row">{{bus.name}}</th>
-            <td class="text-info" (click)="selectBus(bus)">{{bus.locationAddress}}</td>
-            <td>{{bus.station}}</td>
-            <td>{{bus.time}}</td>
-            <td>{{bus.seats}}</td>
-        </tr>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Bus</th>
+                <th scope="col">Current Location</th>
+                <th scope="col">Next Station</th>
+                <th scope="col">Arrival time</th>
+                <th scope="col">Available Seats</th>
+            </tr>
+        </thead>
+        <tbody id="infos">
+            <tr *ngFor="let bus of busService.filteredBuses">
+                <th scope="row">{{bus.key}}</th>
+                <td class="text-info" (click)="selectBus(bus)">{{bus.locationAddress}}</td>
+                <td>
+                    <a (click)="selectStation(bus.station)" data-bs-toggle="collapse" href="#{{bus.key}}" aria-expanded="false" aria-controls="collapseExample">
+                        {{bus.station}}
+                    </a>
+                    <div class="collapse" id="{{bus.key}}" data-bs-parent="#infos">
+                        <app-station [station] = "selectedStation"></app-station>
+                    </div>
+                </td>
+                <td>{{bus.time}}</td>
+                <td>{{bus.seats}}</td>
 
-    </tbody>
-</table>
+            </tr>
+    
+        </tbody>
+    </table>
+</div>
+
 <app-location *ngIf="selectedBus" [$transportObs] = "$selectedBusObs" [transport] = "selectedBus"></app-location>

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -10,7 +9,8 @@ import {
 } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { User } from './user.model';
+import { User } from '../models/user.model';
+import { SnackbarService } from './snackbar.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +21,7 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private snackbarService: SnackbarService
   ) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
@@ -41,11 +41,11 @@ export class AuthService {
       })
       .catch((e) => {
         if (e.code == 'auth/user-not-found') {
-          this.openSnackBar('invalid email address');
+          this.snackbarService.openSnackBar('invalid email address');
         } else if (e.code == 'auth/wrong-password') {
-          this.openSnackBar('invalid password');
+          this.snackbarService.openSnackBar('invalid password');
         } else {
-          this.openSnackBar('error. try again later');
+          this.snackbarService.openSnackBar('error. try again later');
         }
       });
   }
@@ -80,7 +80,7 @@ export class AuthService {
         this.router.navigate(['/home']);
       })
       .catch((e) => {
-        this.openSnackBar(e);
+        this.snackbarService.openSnackBar(e);
       });
   }
 
@@ -111,10 +111,10 @@ export class AuthService {
     user
       .updateEmail(email)
       .then(() => {
-        this.openSnackBar('updated successfully');
+        this.snackbarService.openSnackBar('updated successfully');
       })
       .catch((e) => {
-        this.openSnackBar(e);
+        this.snackbarService.openSnackBar(e);
       });
   }
   resetPwd(email) {
@@ -122,10 +122,10 @@ export class AuthService {
       .auth()
       .sendPasswordResetEmail(email)
       .then(() => {
-        this.openSnackBar("password reset email sent")
+        this.snackbarService.openSnackBar("password reset email sent")
       })
       .catch(() => {
-        this.openSnackBar("email not found")
+        this.snackbarService.openSnackBar("email not found")
       });
   }
   changePwd(pwd) {
@@ -134,14 +134,10 @@ export class AuthService {
     user
       .updatePassword(pwd)
       .then(() => {
-        this.openSnackBar('updated successfully')
+        this.snackbarService.openSnackBar('updated successfully')
       })
       .catch((error) => {
-        this.openSnackBar('an error occured. try again later')
+        this.snackbarService.openSnackBar('an error occured. try again later')
       });
-  }
-  openSnackBar(msg:string) {
-    this._snackBar.open(msg, "",
-      {duration: 1000});
   }
 }
