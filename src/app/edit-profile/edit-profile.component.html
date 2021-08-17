@@ -9,11 +9,7 @@
                     </div>
                     <div *ngIf="pfp" class="change-pfp">
                         <i (click)="changepfpStatus()" class="fa fa-times"></i>
-                        <div class="d-flex align-items-center flex-column">
-                            <label for="imgUrl">image address</label>
-                            <input [(ngModel)]="modifiedpfp" type="text" id="imgUrl">
-                        </div>
-                        <button class="btn update" (click)="update(auth.updateUserData({photoURL: modifiedpfp}))">Update</button>
+                        <input type="file" accept=".jpg, .png" (change)="updatepfp($event)" class="w-100">
                     </div>
                     <h4 class="text-center">{{username}}</h4>
                 </div>

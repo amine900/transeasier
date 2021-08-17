@@ -8,6 +8,7 @@ import { AngularFireModule} from "@angular/fire";
 import { AngularFireDatabaseModule} from "@angular/fire/database";
 import { AngularFirestoreModule} from "@angular/fire/firestore";
 import { AngularFireAuthModule} from "@angular/fire/auth";
+import {AngularFireStorageModule} from "@angular/fire/storage"
 import { environment } from 'src/environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -42,7 +43,8 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     BrowserAnimationsModule,
     BrowserModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AngularFireStorageModule
   ],
   providers: [
     MatDatepickerModule,

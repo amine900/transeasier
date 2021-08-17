@@ -15,7 +15,7 @@ export class PasswordComponent implements OnInit {
   ngOnInit(): void {
     this.pwdForm = this.fb.group({
       pwdGroup: this.fb.group({
-        newpwd: ['', [Validators.required, Validators.minLength(8)]],
+        newpwd: ['', [Validators.required]],
         confirmPwd: ['', Validators.required]
       }, {validator: this.pwdMatcher}),
     });

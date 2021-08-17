@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -11,15 +12,22 @@ export class EditProfileComponent implements OnInit {
   pfpURL: string;
   modifiedpfp: string
   pfp:boolean = false;
-  constructor(private auth: AuthService) {}
+  uid: string
+  constructor(private auth: AuthService, private fst: AngularFireStorage) {}
 
   ngOnInit(): void {
     this.auth.user$.subscribe((u) => {
+      this.uid = u.uid
       this.username = ([u.firstName, u.lastName]).join(" ")
       this.modifiedpfp = this.pfpURL = u.photoURL;
     });
   }
   changepfpStatus(): void {
     this.pfp = !this.pfp;
+  }
+  updatepfp(event) {
+    this.fst.ref(this.uid).put(event.target.files[0]).then(data => {data.ref.getDownloadURL().then(url => {
+      this.auth.updateUserData({photoURL: url})
+    })})
   }
 }

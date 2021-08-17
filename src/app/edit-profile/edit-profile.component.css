@@ -77,10 +77,6 @@ body {
     border: grey 1px solid;
     justify-content: space-evenly;
 }
-.update {
-    background-color: #47b2e4;
-    color: white;
-}
 .fa-times {
     position: absolute;
     top:5px;

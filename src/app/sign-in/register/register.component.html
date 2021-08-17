@@ -55,7 +55,7 @@
                 <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fa fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                        <input type="password" class="form-control" placeholder="password" formControlName="pwd"
+                        <input type="password" class="form-control" placeholder="password" formControlName="pwd" pattern="\S{8,}"
                             [ngClass]="{'is-invalid': registerForm.get('pwdGroup').errors ||
                         ((registerForm.get('pwdGroup.pwd').touched ||
                          registerForm.get('pwdGroup.pwd').dirty) &&
@@ -64,7 +64,7 @@
                             <span *ngIf="registerForm.get('pwdGroup.pwd').errors?.required">
                                 You need to enter your password.
                             </span>
-                            <span *ngIf="registerForm.get('pwdGroup.pwd').errors?.minlength">
+                            <span *ngIf="registerForm.get('pwdGroup.pwd').errors?.pattern">
                                 The password must be longer than 8 characters.
                             </span>
                         </span>
