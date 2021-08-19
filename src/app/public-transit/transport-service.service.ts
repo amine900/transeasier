@@ -26,9 +26,7 @@ export class TransportServiceService {
     return this.db.object(path)
   }
   filterTrans(transport: Transport[]): Transport[] {
-    return transport?.filter((mean: Transport) => 
-    mean.locationAddress?.toLowerCase().includes(this.location.toLowerCase()) && mean.station?.includes(this.station.toLowerCase()));
-  }
+    return transport?.filter((mean: Transport) =>  mean.locationAddress?.toLowerCase().includes(this.location.toLowerCase()) && mean.station?.toLowerCase().includes(this.station.toLowerCase()) == undefined || mean.station?.toLowerCase().includes(this.station.toLowerCase()))};
   sortTrans(transport: Transport[]): void {
     if (this.sortValue == "seats") {
       transport?.sort((a: Transport, b: Transport) => Number(b.seats) - Number(a.seats));

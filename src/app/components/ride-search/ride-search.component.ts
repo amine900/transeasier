@@ -4,6 +4,9 @@ import { Carpool } from 'src/app/models/carpool';
 import { CarpoolService } from 'src/app/services/carpool.service';
 import { User } from 'src/app/models/user.model';
 import { DatePipe } from '@angular/common';
+import { DialogService } from 'src/app/services/dialog.service';
+import { ContactDriverComponent } from '../contact-driver/contact-driver.component';
+
 
 @Component({
   selector: 'app-ride-search',
@@ -15,12 +18,14 @@ export class RideSearchComponent implements OnInit, OnChanges {
   @Input() arrival: string;
   @Input() seats: number;
   @Input() date: string;
+  contactDriverRef = ContactDriverComponent;
   rideList: Carpool[];
   filteredRides: Carpool[];
   constructor(
     private datepipe:DatePipe,
     private carpoolService: CarpoolService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public dialog: DialogService
   ) {}
   ngOnChanges(): void {
     this.carpoolService.getRides().valueChanges()

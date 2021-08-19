@@ -1,0 +1,35 @@
+<div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="rideList">
+      <ng-container matColumnDef="departure">
+        <th mat-header-cell *matHeaderCellDef> From </th>
+        <td class="pr-0" mat-cell *matCellDef="let element"> {{element.departure}} </td>
+      </ng-container>
+      <ng-container matColumnDef="arrival">
+        <th mat-header-cell *matHeaderCellDef> To </th>
+        <td class="pr-0" mat-cell *matCellDef="let element"> {{element.arrival}} </td>
+      </ng-container>
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td class="pr-0" mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Time </th>
+        <td class="pr-0" mat-cell *matCellDef="let element"> {{element.time}} </td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td class="pr-0" mat-cell *matCellDef="let element"> {{element.price}} TND</td>
+      </ng-container>
+      <ng-container matColumnDef="seats">
+        <th mat-header-cell *matHeaderCellDef> Seats </th>
+        <td class="pr-0" mat-cell *matCellDef="let element"><i class="fa fa-minus text-info" (click)="decreaseSeats(element)"></i> {{element.seats}} <i class="fa fa-plus text-info" (click)="increaseSeats(element)"></i></td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td class="pr-0" mat-cell *matCellDef="let element"> <button (click)="carpoolService.delete(element.key)" mat-raised-button color="warn">Delete</button> </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>

@@ -7,7 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 export class DialogService {
 
   constructor(public dialog: MatDialog) { }
-  openDialog(component) {
-    this.dialog.open(component);
+  openDialog(component, data) {
+    this.dialog.open(component, data);
   }
 }

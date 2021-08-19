@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Carpool } from '../models/carpool';
@@ -17,4 +18,12 @@ export class CarpoolService {
   create(ride: Carpool) {
     return this.carpoolRef.push(ride);
   }
+  update(key:string, value:any): Promise<void> {
+    return this.carpoolRef.update(key, value)
+  }
+  
+  delete(key:string): Promise<void> {
+    return this.carpoolRef.remove(key)
+  }
+
 }

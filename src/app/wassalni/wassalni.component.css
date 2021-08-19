@@ -22,3 +22,8 @@
     max-height: 80vh;
     overflow: auto;
 }
+.my-rides {
+    position: absolute;
+    right: 20px;
+    top: 90px;
+}

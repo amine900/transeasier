@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
       lastName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       pwdGroup: this.fb.group({
-        pwd: ['', [Validators.required, Validators.minLength(8)]],
+        pwd: ['', [Validators.required]],
         confirmPwd: ['', Validators.required]
       }, {validator: this.pwdMatcher}),
       phone: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern("^[0-9]*$")]],

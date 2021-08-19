@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { EditProfileComponent } from './edit-profile.component';
 import { OverviewComponent } from './overview/overview.component';
 import { PasswordComponent } from './password/password.component';
