@@ -13,6 +13,9 @@ export class ChangalniComponent implements OnInit {
   findticket: FormGroup;
   filteredValues: Observable<string[]>;
   filteredNumbers: Observable<string[]>;
+  ooredooTickets: any[]
+  orangeTickets: any[]
+  TelecomTickets: any[]
 
   constructor( private fb:FormBuilder , private cs :ChagelniService ) { }
 
@@ -23,23 +26,28 @@ export class ChangalniComponent implements OnInit {
     car: '',
     number:1,
      });
-     this.filterOptions(this.findticket.get("from"));
-     this.filterOptions(this.findticket.get("to"));
+    this.cs.get('ooredoo').valueChanges().subscribe(tickets => this.ooredooTickets = tickets)
+    this.cs.get('orange').valueChanges().subscribe(tickets => this.orangeTickets = tickets)
+    this.cs.get('tt').valueChanges().subscribe(tickets => this.TelecomTickets = tickets)
   }
-  filterOptions (formControl){
-    if (formControl === this.findticket.get("from")) {
-      this.filteredValues= this.findticket.get("from").valueChanges.pipe(
-        startWith(''),
-      );
+  check() {
+    let ticketNumber = this.findticket.get('number').value;
+    let ticketValue = this.findticket.get('value').value;
+    let operator = this.findticket.get('operator').value
+    if (operator == 'Ooredoo') {
+      this.ooredooTickets.some(
+        ticket => ticket.number == ticketNumber && ticket.value == ticketValue
+      )
+    } else if (operator == 'TT') {
+      this.TelecomTickets.some(
+        ticket => ticket.number == ticketNumber && ticket.value == ticketValue
+      )
     } else {
-      this.filteredNumbers = this.findticket.get("to").valueChanges.pipe(
-        startWith(''),
-      );
+      this.orangeTickets.some(
+        ticket => ticket.number == ticketNumber && ticket.value == ticketValue
+      )
     }
   }
- get_ticket(){
-   
- }
-  
 
-}
+  }
+  

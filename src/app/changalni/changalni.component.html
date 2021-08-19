@@ -11,17 +11,17 @@
             </select>
             <label for="valeur"> the ticket's value here</label>
             <select name="valeur" id="valeur" class="form-control" formControlName="value" >
-                <option value="1" selected='yes'> 1TND</option>
-                <option value="5"> 5TND</option>
-                <option value="10"> 10TND</option>
-                <option value="20"> 20TND</option>
+                <option value="1TND" selected='yes'> 1TND</option>
+                <option value="5TND"> 5TND</option>
+                <option value="10TND"> 10TND</option>
+                <option value="20TND"> 20TND</option>
             </select>
     
             <label for="ticket"> Enter your ticket's code down here ! </label>
             <div class="input-group mb-3">
                 <input  id="ticket" type="number" class="form-control" placeholder="**************" aria-label="ticket"
                     aria-describedby="get_btn" required formControlName="number">
-                <button class="btn btn-outline-primary" type="button" id="get_btn" >Get a parking ticket</button>
+                <button class="btn btn-outline-primary" type="button" id="get_btn" (click)="check()">Get a parking ticket</button>
             </div>
         </div>
     </form>

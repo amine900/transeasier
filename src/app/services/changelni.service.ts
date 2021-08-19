@@ -5,15 +5,10 @@ import { ticket } from '../models/ticket';
   providedIn: 'root'
 })
 export class ChagelniService {
-  path:string = '/tickets';
   TicketRef: AngularFireList<ticket>;
-  constructor(private db: AngularFireDatabase) { 
-    this.TicketRef = this.db.list(this.path);
+  constructor(private db: AngularFireDatabase) {
   }
-  get():AngularFireList<ticket> {
-    return this.TicketRef
-  }
-  create(tic: ticket) {
-    return this.TicketRef.push(tic);
+  get(operator):AngularFireList<ticket> {
+    return this.db.list(`tickets/${operator}`)
   }
 }
