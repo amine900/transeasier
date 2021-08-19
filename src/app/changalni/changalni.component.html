@@ -1,24 +1,28 @@
 <section class="changelni-container">
-    <div class="form-group card">
-        <label for="operator">Choose your operator : </label>
-        <select name="operator" id="operator" class="form-control" [(ngModel)]="operator">
-            <option value="TT" selected>Tunisie Telecom </option>
-            <option value="Orange"> Orange</option>
-            <option value="Ooredoo"> Ooredoo</option>
-        </select>
-        <label for="valeur"> the ticket's value here</label>
-        <select name="valeur" id="valeur" class="form-control" [(ngModel)]="valeur" >
-            <option value="1" selected> 1TND</option>
-            <option value="5"> 5TND</option>
-            <option value="10"> 10TND</option>
-            <option value="20"> 20TND</option>
-        </select>
-
-        <label for="ticket"> Enter your ticket's code down here ! </label>
-        <div class="input-group mb-3">
-            <input [(ngModel)]="code" id="ticket" type="number" class="form-control" placeholder="**************" aria-label="ticket"
-                aria-describedby="get_btn" required>
-            <button class="btn btn-outline-primary" type="button" id="get_btn" (click)="slm()">Get a parking ticket</button>
+    <form [formGroup]="findticket" > 
+        <div class="form-group card">
+            <label for="car">Enter your car number </label>
+            <input type="text" id="car"  class="form-control" placeholder="123TUN4567" formControlName="car">
+            <label for="operator">Choose your operator : </label>
+            <select name="operator" id="operator" class="form-control" formControlName="operator">
+                <option value="TT" selected>Tunisie Telecom </option>
+                <option value="Orange"> Orange</option>
+                <option value="Ooredoo"> Ooredoo</option>
+            </select>
+            <label for="valeur"> the ticket's value here</label>
+            <select name="valeur" id="valeur" class="form-control" formControlName="value" >
+                <option value="1" selected='yes'> 1TND</option>
+                <option value="5"> 5TND</option>
+                <option value="10"> 10TND</option>
+                <option value="20"> 20TND</option>
+            </select>
+    
+            <label for="ticket"> Enter your ticket's code down here ! </label>
+            <div class="input-group mb-3">
+                <input  id="ticket" type="number" class="form-control" placeholder="**************" aria-label="ticket"
+                    aria-describedby="get_btn" required formControlName="number">
+                <button class="btn btn-outline-primary" type="button" id="get_btn" >Get a parking ticket</button>
+            </div>
         </div>
-    </div>
+    </form>
 </section>
