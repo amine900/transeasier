@@ -10,14 +10,16 @@ import { RideOfferComponent } from '../components/ride-offer/ride-offer.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { RideSearchComponent } from '../components/ride-search/ride-search.component';
 import { ContactDriverComponent } from '../components/contact-driver/contact-driver.component';
-
+import {MatTableModule} from '@angular/material/table';
+import { MyRidesComponent } from '../components/my-rides/my-rides.component';
 
 @NgModule({
   declarations: [
     WassalniComponent,
     RideOfferComponent,
     RideSearchComponent,
-    ContactDriverComponent
+    ContactDriverComponent,
+    MyRidesComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,7 @@ import { ContactDriverComponent } from '../components/contact-driver/contact-dri
     MatDatepickerModule,
     MatButtonModule,
     MatDialogModule,
+    MatTableModule,
     MatAutocompleteModule,
     RouterModule.forChild([{path:"", component: WassalniComponent}])
   ]
