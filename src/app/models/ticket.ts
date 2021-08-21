@@ -1,3 +1,5 @@
+
+
 export class ticket {
     key: string;
     number: string;
@@ -6,9 +8,9 @@ export class ticket {
 }
 
 export class park_auth{
-    key : number;
+    key : string;
     validity:string;
-    relaseDate : Date;
+    releaseDate :string;
     car:string;
 
 }

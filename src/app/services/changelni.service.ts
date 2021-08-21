@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { ticket } from '../models/ticket';
+import { park_auth } from '../models/ticket';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +18,7 @@ export class ChagelniService {
   delete(key:string, operator: string): Promise<void> {
     return this.db.list(`tickets/${operator}`).remove(key)
   }
-  create(authpark){
-    return this.getauth().push(authpark)
+  create(authpark : park_auth){
+   return this.getauth().push(authpark)
   }
 }

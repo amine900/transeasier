@@ -18,42 +18,45 @@ export class ChangalniComponent implements OnInit {
   ooredooTickets: any[]
   orangeTickets: any[]
   TelecomTickets: any[]
-  park :park_auth;
-  constructor( private fb:FormBuilder , private cs :ChagelniService ) { }
+  park: park_auth = new park_auth()
+  errmsg:string =''; 
+  submitted:boolean = false;
+  err:boolean = false;
+  constructor(private fb: FormBuilder, private cs: ChagelniService) { }
 
   ngOnInit(): void {
     this.findticket = this.fb.group({
-    value: '',
-    operator: '',
-    car: '',
-    number: '',
-     });
-     this.cs.get('ooredoo').snapshotChanges().pipe(
+      value: '',
+      operator: '',
+      car: '',
+      number: '',
+    });
+    this.cs.get('ooredoo').snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({ key: c.payload.key, ...c.payload.val() })
         )
       )
-    ).subscribe(tickets => {this.ooredooTickets = tickets})
-      this.cs.get('orange').snapshotChanges().pipe(
+    ).subscribe(tickets => { this.ooredooTickets = tickets })
+    this.cs.get('orange').snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({ key: c.payload.key, ...c.payload.val() })
         )
       )
-    ).subscribe(tickets => {this.orangeTickets = tickets})
-      this.cs.get('tt').snapshotChanges().pipe(
+    ).subscribe(tickets => { this.orangeTickets = tickets })
+    this.cs.get('tt').snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({ key: c.payload.key, ...c.payload.val() })
         )
       )
-    ).subscribe(tickets => {this.TelecomTickets = tickets})
+    ).subscribe(tickets => { this.TelecomTickets = tickets })
   }
 
-  getvalue(){
+  getvalue() {
     return this.findticket.get('value').value
-    }
+  }
 
 
   check() {
@@ -62,57 +65,69 @@ export class ChangalniComponent implements OnInit {
     let operator = this.findticket.get('operator').value
     if (operator == 'Ooredoo') {
       return this.ooredooTickets.some(
-        ticket => {if (ticket.number == ticketNumber && ticket.value == ticketValue) {
-          this.cs.delete(ticket.key, 'ooredoo')
-          return 1
-        }}
+        ticket => {
+          if (ticket.number == ticketNumber && ticket.value == ticketValue) {
+            this.cs.delete(ticket.key, 'ooredoo')
+            return 1
+          }
+        }
       )
     } else if (operator == 'TT') {
       return this.TelecomTickets.some(
-        ticket => {if (ticket.number == ticketNumber && ticket.value == ticketValue) {
-          this.cs.delete(ticket.key, 'tt')
-          return 1
-        }}
+        ticket => {
+          if (ticket.number == ticketNumber && ticket.value == ticketValue) {
+            this.cs.delete(ticket.key, 'tt')
+            return 1
+          }
+        }
       )
     } else {
       return this.orangeTickets.some(
-        ticket => {if (ticket.number == ticketNumber && ticket.value == ticketValue) {
-          this.cs.delete(ticket.key, 'orange')
-          return 1
-        }}
+        ticket => {
+          if (ticket.number == ticketNumber && ticket.value == ticketValue) {
+            this.cs.delete(ticket.key, 'orange')
+            return 1
+          }
+        }
       )
     }
   }
 
- get(){
-  let value = this.getvalue()
-  let auth = this.check() 
-  let dateTime = new Date()
-  let validity :string =''
-  let car  = this.findticket.get('car').value
+  get() {
+    let value = this.getvalue()
+    let auth = this.check()
+    let validity: string = ''
+    let car = this.findticket.get('car').value
+    if (auth) {
+      if (value == "1TND") {
+        validity = '1 Hour'
+      }
+      else if (value == "5TND") {
+        validity = '6 Hour'
+      }
+      else if (value == "10TND") {
+        validity = '12 Hour'
+      }
+      else {
+        validity = '24 Hour'
+      }
+    this.submitted=true
+      
+    this.park.releaseDate =Date()
+    this.park.validity = validity;
+    this.park.car = car;
+    this.cs.create(this.park)
+    
 
-  console.log(dateTime)
-  if (auth) {
-    if (value == "1TND") {
-       validity='1 Hour'
     }
-    else if(value == "5TND"){
-       validity='6 Hour'
+    else {
+      this.errmsg="invalid ticket"
+      console.log(this.errmsg)
+      this.err=true
     }
-    else if(value == "10TND"){
-       validity='12 Hour'
-    }
-
-  } else {
-    validity='24 Hour'
   }
-  this.park.relaseDate = dateTime;
-  this.park.validity = validity;
-  this.park.car = car ;
-  this.cs.create(this.park)
-  console.log('it works')
- }
+} 
 
 
-  }
   
+
