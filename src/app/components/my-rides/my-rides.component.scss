@@ -1,5 +1,4 @@
 .example-container {
-    height: 400px;
     overflow: auto;
   }
   
@@ -11,4 +10,11 @@
   }
   i:hover {
     opacity: 0.6;
+  }
+
+  ::ng-deep {
+    .mat-dialog-container {
+        padding: 0;
+    }
+  
   }

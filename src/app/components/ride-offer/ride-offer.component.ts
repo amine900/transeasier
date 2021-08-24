@@ -13,7 +13,7 @@ import { SnackbarService } from 'src/app/services/snackbar.service';
 @Component({
   selector: 'app-ride-offer',
   templateUrl: './ride-offer.component.html',
-  styleUrls: ['./ride-offer.component.css']
+  styleUrls: ['./ride-offer.component.scss']
 })
 export class RideOfferComponent implements OnInit {
   addRide: FormGroup;
