@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ChagelniService } from '../services/changelni.service';
 import { park_auth } from '../models/ticket';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-changelni',
@@ -98,6 +99,7 @@ export class ChangalniComponent implements OnInit {
     let auth = this.check()
     let validity: string = ''
     let car = this.findticket.get('car').value
+
     if (auth) {
       if (value == "1TND") {
         validity = '1 Hour'
@@ -116,8 +118,12 @@ export class ChangalniComponent implements OnInit {
     this.park.releaseDate =Date()
     this.park.validity = validity;
     this.park.car = car;
-    this.cs.create(this.park)
+    console.log('testest ',this.cs.create(this.park));
+   // this.park.key = this.findticket.get('id')
+   // console.log(this.park);
     
+   this.park.key = this.cs.create(this.park);
+
 
     }
     else {

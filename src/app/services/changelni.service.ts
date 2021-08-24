@@ -1,3 +1,4 @@
+import { keyframes } from '@angular/animations';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { ticket } from '../models/ticket';
@@ -18,7 +19,14 @@ export class ChagelniService {
   delete(key:string, operator: string): Promise<void> {
     return this.db.list(`tickets/${operator}`).remove(key)
   }
-  create(authpark : park_auth){
-   return this.getauth().push(authpark)
+  create(authpark : park_auth) : any{
+    let t = "";
+    this.getauth().push(authpark).then((snap) => {
+      t = snap.key;
+      console.log(
+        "haw lid tick", t
+      );   
+      return t;     
+  });
   }
 }
