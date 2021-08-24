@@ -118,7 +118,9 @@ export class ChangalniComponent implements OnInit {
     this.park.releaseDate =Date()
     this.park.validity = validity;
     this.park.car = car;
-    console.log('testest ',this.cs.create(this.park));
+    console.log('testest ', this.cs.create(this.park).then((snap) => {
+      this.park.key = snap.key;
+  }));
    // this.park.key = this.findticket.get('id')
    // console.log(this.park);
     

@@ -20,13 +20,6 @@ export class ChagelniService {
     return this.db.list(`tickets/${operator}`).remove(key)
   }
   create(authpark : park_auth) : any{
-    let t = "";
-    this.getauth().push(authpark).then((snap) => {
-      t = snap.key;
-      console.log(
-        "haw lid tick", t
-      );   
-      return t;     
-  });
+    return this.getauth().push(authpark)
   }
 }
