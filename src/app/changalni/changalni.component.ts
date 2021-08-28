@@ -124,7 +124,6 @@ export class ChangalniComponent implements OnInit {
    // this.park.key = this.findticket.get('id')
    // console.log(this.park);
     
-   this.park.key = this.cs.create(this.park);
 
 
     }
