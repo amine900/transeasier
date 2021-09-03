@@ -1,0 +1,13 @@
+.bg-info{
+
+  border-radius: 20px;
+}
+.colorchanged:hover {
+  color: red;
+}
+
+.add {
+  display: flex;
+  justify-content: flex-end;
+}
+

@@ -1,0 +1,44 @@
+<section class="changelni-container">
+    <form [formGroup]="findticket">
+        <div class="form-group card">
+            <label for="car">Enter your car number </label>
+            <input type="text" id="car" class="form-control" placeholder="123TUN4567" formControlName="car">
+            <label for="operator">Choose your operator : </label>
+            <select name="operator" id="operator" class="form-control" formControlName="operator">
+                <option value="TT" selected>Tunisie Telecom </option>
+                <option value="Orange"> Orange</option>
+                <option value="Ooredoo"> Ooredoo</option>
+            </select>
+            <label for="valeur"> the ticket's value here</label>
+            <select name="valeur" id="valeur" class="form-control" formControlName="value">
+                <option value="1TND" selected='yes'> 1TND</option>
+                <option value="5TND"> 5TND</option>
+                <option value="10TND"> 10TND</option>
+                <option value="20TND"> 20TND</option>
+            </select>
+
+            <label for="ticket"> Enter your ticket's code down here ! </label>
+            <div class="input-group mb-3">
+                <input id="ticket" type="number" class="form-control" placeholder="**************" aria-label="ticket"
+                    aria-describedby="get_btn" required formControlName="number">
+                <button class="btn btn-outline-primary" type="button" id="get_btn" (click)="get()">Get a parking
+                    ticket</button>
+            </div>
+        </div>
+    </form>
+    <div *ngIf='!submitted else ticket' class="park-container card bg-primary">
+        <h1> your park ticket will appear here </h1>
+        <p>once you fill the form corectly </p>
+        <div *ngIf='err else parking'>
+            {{errmsg}} , please fill the form correctly
+        </div>
+    </div>
+    <ng-template #ticket>
+        <div class="park-container  card bg-primary">
+            <h3>You bought a parking ticket for the car {{park.car}} </h3>
+            <h2>Ticket key : {{park.key}}</h2>
+            <h4> valid for {{park.validity}}</h4>
+            <p>Starting from {{park.releaseDate}} </p>
+        </div>
+    </ng-template>
+</section>

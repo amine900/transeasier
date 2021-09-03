@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PwdResetComponent } from '../components/pwd-reset/pwd-reset.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,6 +20,7 @@ import { PwdResetComponent } from '../components/pwd-reset/pwd-reset.component';
   exports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     PwdResetComponent,
     MatSnackBarModule

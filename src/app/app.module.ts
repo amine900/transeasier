@@ -1,4 +1,3 @@
-import { CommunityComponent } from './community/community.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,19 +18,30 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { CommentsComponent } from './popup/comments/comments.component';
+
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ComfirmDialogComponent } from './popup/comfirm-dialog/comfirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CommunityComponent
+    CommentsComponent,
+    ComfirmDialogComponent
   ],
   imports: [
     AppRoutingModule,
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule,
+    BrowserModule,
     NgbModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -41,10 +51,29 @@ import { DatePipe } from '@angular/common';
     AngularFirestoreModule,
     AngularFireAuthModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    BrowserModule,
     MatSnackBarModule,
-    AngularFireStorageModule
+    MatListModule,
+    AngularFireStorageModule,
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
+  ],
+  exports : [
+    MatDialogModule,
+    MatCardModule,
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatInputModule
+
+  ],
+  entryComponents: [
+CommentsComponent,
+ComfirmDialogComponent
   ],
   providers: [
     MatDatepickerModule,
