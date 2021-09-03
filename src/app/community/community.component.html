@@ -1,4 +1,5 @@
 <div class="container">
+  <h1>Comments</h1>
   <!-- Main Body -->
   <section>
     <div class="container">
@@ -6,11 +7,13 @@
 
             <div class="col-md- pb-4" >
                 <div class="comment mt-4 text-justify float-left">
-                  <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
-                    <h4>{{feedback?.account_id?.userName}}</h4> <span>{{feedback?.created_at}}</span> <br>
-                    <p>
+                  <ul *ngFor="let feedback of feedbacks" >
+                  <img src="htts://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
+                   <li> <h4><strong>  {{feedback.title}}</strong>{{feedback?.account_id?.userName}}</h4> <span>{{feedback?.created_at}}</span> <br></li>
+                   <li> <p>
                       {{feedback?.content}}
-                    </p>
+                    </p></li>
+                  </ul>
                       <input (click)="openDialog(feedback?._id)" class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
                       <label for="modal-btn">Reply <i class="uil uil-expand-arrows"></i></label>
                 </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommentsComponent } from '../popup/comments/comments.component';
+import { FeedbackService } from '../services/feedback.service';
+import { FeedBack } from '../models/feedback.model';
 
 @Component({
   selector: 'app-community',
@@ -84,10 +86,14 @@ export class CommunityComponent implements OnInit {
     },
   ];
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private feedbackService: FeedbackService) { }
 
   ngOnInit(): void {
  console.log("hani fil community");
+ this.feedbackService.getFeedbacks().subscribe(feedbacks => {console.log(feedbacks)
+  this.feedbacks = feedbacks;
+});
+
 
 
   }
