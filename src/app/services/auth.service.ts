@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-  AngularFirestoreDocument,
-} from '@angular/fire/firestore';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { User } from '../models/user.model';
@@ -19,14 +15,14 @@ export class AuthService {
   user$: Observable<User>;
   constructor(
     private afAuth: AngularFireAuth,
-    private afs: AngularFirestore,
+    private db: AngularFireDatabase,
     private router: Router,
     private snackbarService: SnackbarService
   ) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+          return this.db.object<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
@@ -61,8 +57,8 @@ export class AuthService {
     credential
       .then((Credential) => {
         const user = Credential.user;
-        const userRef: AngularFirestoreDocument<User> = this.afs.doc(
-          `users/${user.uid}`
+        const userRef: AngularFireList<User> = this.db.list(
+          `users`
         );
         const data = {
           uid: user.uid,
@@ -76,7 +72,7 @@ export class AuthService {
           birthDate: 'dd/mm/yyyy',
           bio: '',
         };
-        userRef.set(data, { merge: true });
+        userRef.set(user.uid, data);
         this.router.navigate(['/home']);
       })
       .catch((e) => {
@@ -86,10 +82,10 @@ export class AuthService {
 
   updateUserData(data: any) {
     const user = firebase.auth().currentUser;
-    const userRef: AngularFirestoreDocument<User> = this.afs.doc(
-      `users/${user.uid}`
+    const userRef: AngularFireList<User> = this.db.list(
+      `users`
     );
-    userRef.update(data);
+    userRef.update(user.uid, data);
   }
 
   signOut() {
@@ -102,8 +98,8 @@ export class AuthService {
         console.log(e);
       });
   }
-  getAllUsers(): AngularFirestoreCollection<User> {
-    return this.afs.collection('users');
+  getAllUsers(): AngularFireList<User> {
+    return this.db.list('users');
   }
   updateUserEmail(email: string): void {
     const user = firebase.auth().currentUser;

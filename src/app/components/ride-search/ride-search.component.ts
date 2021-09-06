@@ -1,11 +1,11 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Carpool } from 'src/app/models/carpool';
 import { CarpoolService } from 'src/app/services/carpool.service';
 import { User } from 'src/app/models/user.model';
 import { DatePipe } from '@angular/common';
 import { DialogService } from 'src/app/services/dialog.service';
 import { ContactDriverComponent } from '../contact-driver/contact-driver.component';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 
 @Component({
@@ -24,16 +24,18 @@ export class RideSearchComponent implements OnInit, OnChanges {
   constructor(
     private datepipe:DatePipe,
     private carpoolService: CarpoolService,
-    private afs: AngularFirestore,
+    private db: AngularFireDatabase,
     public dialog: DialogService
   ) {}
   ngOnChanges(): void {
     this.carpoolService.getRides().valueChanges()
       .subscribe((rides) => {
-        this.rideList = rides
+        this.rideList = rides.map(ride => {Object.keys(ride).forEach(function(key){ ride[key] = String(ride[key]).split('"').join('').split("\\").join('')});return ride})
         this.rideList.forEach((ride) => {
-          this.afs.doc(`users/${ride.user_id}`).valueChanges().subscribe( (user:User) =>
-            {ride.user = user}
+          this.db.object(`users/${ride.user_id}`).valueChanges().subscribe( (user:User) =>
+            {
+              console.log(user);
+              ride.user = user}
           )
         });
         this.filteredRides = this.rideList.filter(ride => ride.arrival.toLowerCase().includes(this.arrival.toLowerCase()) && ride.departure.toLowerCase().includes(this.departure.toLowerCase())
