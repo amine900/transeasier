@@ -1,9 +1,9 @@
 {
   "targets": {
-    "transeasier-final": {
+    "transeasier-bc9fc": {
       "hosting": {
         "transeasier": [
-          "transeasier-final"
+          "transeasier-bc9fc"
         ]
       }
     }
