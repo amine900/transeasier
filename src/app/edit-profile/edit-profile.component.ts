@@ -17,6 +17,7 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.user$.subscribe((u) => {
+      console.log(u)
       this.uid = u.uid
       this.username = ([u.firstName, u.lastName]).join(" ")
       this.modifiedpfp = this.pfpURL = u.photoURL;
