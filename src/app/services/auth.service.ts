@@ -13,6 +13,7 @@ import { SnackbarService } from './snackbar.service';
 })
 export class AuthService {
   user$: Observable<User>;
+  admin:boolean = false;
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase,
@@ -22,6 +23,7 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
+          this.db.object(`users/${user.uid}`).valueChanges().subscribe((u: User) => {this.admin = u.role == "admin"})
           return this.db.object<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
@@ -66,6 +68,7 @@ export class AuthService {
           firstName: firstName,
           lastName: lastName,
           phoneNumber: phonenumber,
+          role: 'client',
           photoURL: "https://s.clipartkey.com/mpngs/s/273-2737919_default-profile.png",
           address: address,
           gender: 'null',

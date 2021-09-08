@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between align-items-center">
+<mat-form-field class="w-25" appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input type="text" matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+  <button mat-raised-button class="h-50 mr-4" (click)="Dialog.openDialog(addTicketRef, {})">add ticket</button>
+</div>
+  <div class="example-container mat-elevation-z8">
+      <table mat-table [dataSource]="filteredparksList">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> park ticket id </th>
+          <td class="pr-0" mat-cell *matCellDef="let element"> {{element.key}} </td>
+        </ng-container>
+        <ng-container matColumnDef="number">
+          <th mat-header-cell *matHeaderCellDef> car registration number </th>
+          <td class="pr-0" mat-cell *matCellDef="let element"> {{element.car}} </td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> purchase date </th>
+          <td class="pr-0" mat-cell *matCellDef="let element"> {{element.releaseDate | date:'medium'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="validity">
+          <th mat-header-cell *matHeaderCellDef> validity</th>
+          <td class="pr-0" mat-cell *matCellDef="let element"> {{element.validity}} </td>
+        </ng-container>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No matching data</td>
+        </tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>

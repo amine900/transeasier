@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Carpool } from '../models/carpool';

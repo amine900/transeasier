@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { AuthService } from './services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   screenWidth: number;
   title = 'transeasier';
   showdrop:boolean = false
@@ -20,5 +20,7 @@ export class AppComponent {
   }
   ondropclick(): void {
     this.showdrop = !this.showdrop
+  }
+  ngOnInit(): void {
   }
 }

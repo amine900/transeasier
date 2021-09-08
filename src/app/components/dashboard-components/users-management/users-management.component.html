@@ -1,0 +1,35 @@
+<mat-form-field class="w-25" appearance="standard">
+  <mat-label>Filter</mat-label>
+  <input type="text" matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
+<div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="filteredusersList">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> id </th>
+        <td class="pr-0" mat-cell *matCellDef="let element"> {{element.key}} </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> name </th>
+        <td class="pr-0" mat-cell *matCellDef="let element"> {{element.firstName + " " + element.lastName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> email </th>
+        <td class="pr-0" mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> role</th>
+        <td class="pr-0" mat-cell *matCellDef="let element"> <mat-form-field>
+          <mat-label></mat-label>
+          <mat-select [(ngModel)]="element.role" (ngModelChange)="onChangeRole($event, element.key)">
+            <mat-option value="admin">admin</mat-option>
+            <mat-option value="client">client</mat-option>
+          </mat-select>
+        </mat-form-field> </td>
+      </ng-container>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>

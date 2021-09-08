@@ -9,4 +9,5 @@ export interface User {
     gender?: string;
     birthDate?: string;
     bio?: string;
+    role?: string;
 }

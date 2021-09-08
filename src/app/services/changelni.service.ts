@@ -13,7 +13,7 @@ export class ChagelniService {
   get(operator):AngularFireList<ticket> {
     return this.db.list(`tickets/${operator}`)
   }
-  getauth(){
+  getauth(): AngularFireList<park_auth>{
     return this.db.list('parkAuth')
   }
   delete(key:string, operator: string): Promise<void> {

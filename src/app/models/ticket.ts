@@ -1,10 +1,10 @@
 
 
 export class ticket {
-    key: string;
+    key?: string;
     number: string;
     value: string;
-    operator: string;
+    operator?: string;
 }
 
 export class park_auth{

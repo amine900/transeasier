@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Add a ticket</h2>
+<section class="ticket-container mt-4">
+    <form [formGroup]="addTicket">
+        <div class="form-group card">
+            <label for="operator">Choose your operator : </label>
+            <select name="operator" id="operator" class="form-control" formControlName="operator">
+                <option value="tt" selected>Tunisie Telecom </option>
+                <option value="orange"> Orange</option>
+                <option value="ooredoo"> Ooredoo</option>
+            </select>
+            <label for="valeur"> the ticket's value here</label>
+            <select name="valeur" id="valeur" class="form-control" formControlName="value">
+                <option value="1TND" selected='yes'> 1TND</option>
+                <option value="5TND"> 5TND</option>
+                <option value="10TND"> 10TND</option>
+                <option value="20TND"> 20TND</option>
+            </select>
+
+            <label for="ticket"> Enter your ticket's code down here ! </label>
+            <div class="input-group mb-3">
+                <input id="ticket" type="text" class="form-control" placeholder="**************" formControlName="number">
+                <button class="btn btn-outline-primary" type="button" id="get_btn" [disabled]="addTicket.invalid" (click)="add()">add ticket</button>
+            </div>
+        </div>
+    </form>
+</section>

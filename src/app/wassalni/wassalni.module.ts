@@ -6,12 +6,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { RideOfferComponent } from '../components/ride-offer/ride-offer.component';
+import { RideOfferComponent } from '../components/carpool/ride-offer/ride-offer.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { RideSearchComponent } from '../components/ride-search/ride-search.component';
-import { ContactDriverComponent } from '../components/contact-driver/contact-driver.component';
+import { RideSearchComponent } from '../components/carpool/ride-search/ride-search.component';
+import { ContactDriverComponent } from '../components/carpool/contact-driver/contact-driver.component';
 import {MatTableModule} from '@angular/material/table';
-import { MyRidesComponent } from '../components/my-rides/my-rides.component';
+import { MyRidesComponent } from '../components/carpool/my-rides/my-rides.component';
 
 @NgModule({
   declarations: [

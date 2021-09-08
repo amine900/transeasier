@@ -1,0 +1,11 @@
+.example-container {
+    width: 98%;
+    max-height: 70vh;
+    overflow: auto;
+  }
+table {
+    width: 100%;
+}
+td {
+    width: 25%;
+}

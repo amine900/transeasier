@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { AutocompleteService } from '../services/autocomplete.service';
-import { RideOfferComponent } from '../components/ride-offer/ride-offer.component';
-import { MyRidesComponent } from '../components/my-rides/my-rides.component';
+import { RideOfferComponent } from '../components/carpool/ride-offer/ride-offer.component';
+import { MyRidesComponent } from '../components/carpool/my-rides/my-rides.component';
 import { DialogService } from '../services/dialog.service';
 
 @Component({
