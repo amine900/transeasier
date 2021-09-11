@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>Add station</h2>
+<form class="example-form" [formGroup]="addTransport">      
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" appearance="standard">
+                <mat-label>name</mat-label>
+                <input matInput  formControlName="name">
+            </mat-form-field> </td>
+            <td><mat-form-field class="example-full-width" appearance="standard">
+                <mat-label>total seats</mat-label>
+                <input type="number" matInput  formControlName="seats">
+            </mat-form-field> </td>
+          </tr>
+        </table>
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width" appearance="standard">
+              <mat-label>longitude</mat-label>
+              <input type="number" matInput  formControlName="longitude">
+            </mat-form-field></td>
+            <td><mat-form-field type="number" class="example-full-width" appearance="standard">
+              <mat-label>latitude</mat-label>
+              <input type="number" matInput  formControlName="latitude">
+            </mat-form-field></td>
+          </tr>
+        </table>
+        <h5 class="text-secondary"><i class="fa fa-plus-circle mr-2" color="primary" (click)="addStation()"></i>stations</h5>
+        <div formArrayName="stations">
+            <div [formGroupName]="i"
+            *ngFor="let station of stations.controls; let i=index">
+                <table class="example-full-width" cellspacing="0"><tr>
+                    <td><mat-form-field class="example-full-width" appearance="standard">
+                      <mat-label>station name</mat-label>
+                      <input matInput placeholder="Bus123" formControlName="station">
+                    </mat-form-field></td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="standard">
+                            <mat-label>arrival</mat-label>
+                            <input matInput type="time" formControlName="arrival">
+                        </mat-form-field></td>
+                  </tr>
+                </table>
+            </div>
+        </div>
+</form>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">Submit</button>
+</mat-dialog-actions>

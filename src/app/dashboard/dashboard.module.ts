@@ -14,6 +14,13 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { ParkingComponent } from '../components/dashboard-components/parking/parking.component';
 import { AddTicketComponent } from '../components/dashboard-components/add-ticket/add-ticket.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { BusSettingsComponent } from '../components/dashboard-components/bus-settings/bus-settings.component';
+import { AddStationComponent } from '../components/dashboard-components/add-station/add-station.component';
+import { AddTransportComponent } from '../components/dashboard-components/add-transport/add-transport.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UpdateTransportComponent } from '../components/dashboard-components/update-transport/update-transport.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -21,7 +28,11 @@ import { AddTicketComponent } from '../components/dashboard-components/add-ticke
     UsersManagementComponent,
     TransportComponent,
     ParkingComponent,
-    AddTicketComponent
+    AddTicketComponent,
+    BusSettingsComponent,
+    AddStationComponent,
+    AddTransportComponent,
+    UpdateTransportComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +45,10 @@ import { AddTicketComponent } from '../components/dashboard-components/add-ticke
     MatButtonModule,
     MatToolbarModule,
     MatButtonToggleModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule,
+    MatDialogModule,
+    MatSlideToggleModule
     
   ]
 })

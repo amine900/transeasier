@@ -16,6 +16,7 @@
   }
   mat-button-toggle {
       padding: 15px 60px;
+      cursor: pointer;
   }
   router-outlet {
     padding-left: 10px;

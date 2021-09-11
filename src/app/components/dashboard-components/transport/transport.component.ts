@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from 'src/app/services/dialog.service';
+import { AddStationComponent } from '../add-station/add-station.component';
+import { AddTransportComponent } from '../add-transport/add-transport.component';
 
 @Component({
   selector: 'app-transport',
@@ -6,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transport.component.css']
 })
 export class TransportComponent implements OnInit {
+  addTransportRef = AddTransportComponent;
+  addStationRef = AddStationComponent;
 
-  constructor() { }
+  constructor(public Dialog: DialogService) { }
 
   ngOnInit(): void {
   }

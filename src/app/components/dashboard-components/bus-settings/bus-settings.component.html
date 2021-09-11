@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-between flex-wrap">
+    <div>
+        <ul *ngFor="let bus of transportService.buses; let i = index;">
+            <li class="d-flex justify-content-between align-items-center">{{bus.key}} 
+                <button mat-raised-button color="primary" (click)="show()">edit</button>
+                <button mat-raised-button color="warn">delete</button> 
+                <mat-slide-toggle [(ngModel)]="bus.availabilty" >{{bus.availabilty? "available" : "unavailable"}}</mat-slide-toggle>
+            </li>
+            <hr>
+        </ul>
+    </div>
+    <app-update-transport *ngIf="settings" class="w-25"></app-update-transport>
+</div>

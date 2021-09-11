@@ -1,0 +1,14 @@
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+  form {
+      max-height: 70vh;
+      overflow: auto;
+  }
+  .fa-plus-circle {
+      cursor: pointer;
+  }
