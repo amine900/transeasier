@@ -11,6 +11,7 @@ import { FeedBack } from '../models/feedback.model';
 })
 export class CommunityComponent implements OnInit {
 
+
   feedbacks =  [
     {
       _id : "wa3333333333",
@@ -96,7 +97,13 @@ export class CommunityComponent implements OnInit {
 
 
 
+
   }
+  //onSubmit(){
+    //if ( this.feedback.content != '' && ){
+
+//}
+ // }
 
   openDialog(feedBackId): void {
     const dialogRef = this.dialog.open(CommentsComponent, {
@@ -110,6 +117,7 @@ export class CommunityComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
 
 
 }

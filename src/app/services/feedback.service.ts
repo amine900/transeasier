@@ -10,20 +10,44 @@ import { Observable, observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FeedbackService {
+  //adding the comment
+  AddFeedback(feedback: FeedBack){
+    this.feedbackscollection.push({
+      
+    })
+
+  }
+
+
+     //adding the current user name
+     userName() {
+
+      const user = AngularFireDatabase.auth().currentUser;
+    if (user !== null) {
+      const displayName = user.displayName;
+      const photoURL = user.photoURL;
+      const uid = user.uid;
+    }
+      }
+      //list of feedbacks
   feedbackscollection : AngularFirestoreCollection<FeedBack>;
 feedbacks: Observable<FeedBack[]>
   constructor(private db: AngularFireDatabase , public afs: AngularFirestore) {
-    this.feedbacks= this.afs.collection('Feedbacks').valueChanges()
+    this.feedbackscollection=this.afs.collection('feedbacks')
+    this.feedbacks= this.afs.collection('Feedbacks').snapshotChanges().map(changes =>{return changes.map(a => {
+      const data = a.playload.doc.data() as FeedBack;
+      data._id= a.playload.doc.id;
+      return data
+    })});
    }
-  addfeedback() {
-
-  const user = AngularFireDatabase.auth().currentUser;
-if (user !== null) {
-  const displayName = user.displayName;
-  const photoURL = user.photoURL;
-  const uid = user.uid;
-}
-  }
 getFeedbacks(){
   return.this.feedbacks
-}}
+}
+//deleting feedbacks
+DeleteFeedback(id, feedBackId){
+  this.feedbacks.emit()
+
+}
+}
+
+

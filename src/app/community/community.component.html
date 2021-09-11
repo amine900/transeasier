@@ -22,12 +22,13 @@
       </div>
       <div class="row">
         <div class="col-sm mt-1 mb-3">
-          <form id="algin-form">
+          <form id="algin-form" (ngSubmit="onSubmit()">
               <div class="form-group">
                   <h4>Leave a comment</h4> <label for="message">Message</label>
-                  <textarea name="msg" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
+                  <textarea name="msg" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;" placeholder="Add content" [(ngModel="feedback.content" name="content")]></textarea>
               </div>
-              <div class="form-group"> <label for="name">Title</label> <input type="text" name="name" id="fullname" class="form-control"> </div>
+
+              <div class="form-group"> <label for="name" >Title</label> <input type="text" name="name" id="fullname" class="form-control" placeholder="Add title" [(ngModel="feedback.title" name="title")]> </div>
 
               <div class="form-group"> <button type="button" id="post" class="btn" >Post Comment</button> </div>
           </form>
