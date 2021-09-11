@@ -21,6 +21,9 @@ import { AddTransportComponent } from '../components/dashboard-components/add-tr
 import { MatDialogModule } from '@angular/material/dialog';
 import { UpdateTransportComponent } from '../components/dashboard-components/update-transport/update-transport.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { StationSettingsComponent } from '../components/dashboard-components/station-settings/station-settings.component';
+import { MetroSettingsComponent } from '../components/dashboard-components/metro-settings/metro-settings.component';
+import { TGMSettingsComponent } from '../components/dashboard-components/tgmsettings/tgmsettings.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     BusSettingsComponent,
     AddStationComponent,
     AddTransportComponent,
-    UpdateTransportComponent
+    UpdateTransportComponent,
+    StationSettingsComponent,
+    MetroSettingsComponent,
+    TGMSettingsComponent
   ],
   imports: [
     CommonModule,
