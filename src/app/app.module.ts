@@ -33,8 +33,7 @@ import { ComfirmDialogComponent } from './popup/comfirm-dialog/comfirm-dialog.co
   declarations: [
     AppComponent,
     CommentsComponent,
-    ComfirmDialogComponent
-  ],
+    ComfirmDialogComponent  ],
   imports: [
     AppRoutingModule,
     CommonModule,

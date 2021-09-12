@@ -1,10 +1,63 @@
 .forgot {
-    color: #47b2e4;
+    color: #ff7000;
     cursor: pointer;
 }
 
 .login-btn {
-    background-color: rgb(92 128 190 / 90%);
+    background-color: #ff7000;
     color: white;
 }
 
+
+ .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (max-width: 991px) {
+
+ .animated {
+      -webkit-animation: none;
+      animation: none;
+  }
+ .hero-img {
+      text-align: center;
+  }
+ .hero-img img {
+      width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+
+.hero-img img {
+      width: 70%;
+  }
+}
+
+@media (max-width: 575px) {
+.hero-img img {
+      width: 80%;
+  }
+.btn-get-started {
+      font-size: 16px;
+      padding: 10px 24px 11px 24px;
+  }
+}
+
+@-webkit-keyframes up-down {
+  0% {
+      transform: translateY(10px);
+  }
+  100% {
+      transform: translateY(-10px);
+  }
+}
+
+@keyframes up-down {
+  0% {
+      transform: translateY(10px);
+  }
+  100% {
+      transform: translateY(-10px);
+  }
+}

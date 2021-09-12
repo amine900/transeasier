@@ -33,11 +33,12 @@
 }
 
 .side-bar {
-  background-color: rgb(63 96 153 / 90%) !important;
+  background-color: linear-gradient(#232324, #272727);
+
 }
 
 .text-info {
-  color: #47b2e4 !important;
+  color: #ffc609 !important;
 }
 
 .wrapper .contact-form {
@@ -83,7 +84,7 @@
   border: none;
   padding: 8px 18px;
   box-shadow: 0 8px 12px #3535356b;
-  background-color: #47b2e4;
+  background-color: #eb8006;
 }
 
 @media(max-width: 900.5px) {
