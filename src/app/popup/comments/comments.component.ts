@@ -2,6 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Comment } from 'src/app/models/comment.model';
+import { AuthService } from 'src/app/services/auth.service';
+import { FeedbackService } from 'src/app/services/feedback.service';
 import { ComfirmDialogComponent } from '../comfirm-dialog/comfirm-dialog.component';
 
 @Component({
@@ -14,81 +17,10 @@ export class CommentsComponent implements OnInit {
   content: string;
   account_id: string;
 
-  comments =  [
-    {
-      _id : "88589a",
-      account_id : {
-        userName : "Wassim"
-      },
-      created_at : "11pm",
-      deletable : false,
-      content : "Salem"
-    },
-    {
-      _id : "88589a",
-      account_id : {
-        userName : "Cyrine"
-      },
-      created_at : "11pm",
-      deletable : false,
-      content : "Salem"
-    },
-    {
-      _id : "88589a",
-      account_id : {
-        userName : "Wassim"
-      },
-      created_at : "11pm",
-      deletable : false,
-      content : "Salem"
-    },
-    {
-      _id : "88589a",
-      account_id : {
-        userName : "Cyrine"
-      },
-      created_at : "11pm",
-      deletable : false,
-      content : "Salem"
-    },
-    {
-      _id : "88589a",
-      account_id : {
-        userName : "Wassim"
-      },
-      created_at : "11pm",
-      deletable : false,
-      content : "Salem"
-    },
-    {
-      _id : "88589a",
-      account_id : {
-        userName : "Cyrine"
-      },
-      created_at : "11pm",
-      deletable : false,
-      content : "Salem"
-    },
-    {
-      _id : "88589a",
-      account_id : {
-        userName : "Wassim"
-      },
-      created_at : "11pm",
-      deletable : false,
-      content : "Salem"
-    },
-    {
-      _id : "88589a",
-      account_id : {
-        userName : "Cyrine"
-      },
-      created_at : "11pm",
-      deletable : false,
-      content : "Salem"
-    },
-  ];
+  comments: Comment[];
   constructor(
+    private feedbackSerice: FeedbackService,
+    private auth: AuthService,
     @Inject(MAT_DIALOG_DATA) public data: any,
               private snackBar: MatSnackBar,
               public dialog: MatDialog,
@@ -98,20 +30,16 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data.feedBackId);
+    this.comments = this.data.comments === undefined ? [] : this.data.comments
+    console.log(this.comments)
   }
 
-  addComment(comment) {
-    this.content = this.myText;
-    this.comments.push(comment);
-    //this.account_id = JSON.parse(localStorage.getItem('account'))._id;
-
-    // this.apiService.apiPost(`file/comment/` + this.data.fileId,
-    // {account_id: this.account_id, content: this.content}).subscribe((response: any) => {
-    //   this.socket.emit('comment', this.data.fileId);
-    //   console.log(response);
-    //   this.myText = '';
-    //   this.getFiles(this.data.fileId);
-    // });
+  addComment() {
+    this.auth.user$.subscribe(u => {
+      let comment:Comment = {account_id: u, content:this.myText, created_at:Date.now()}
+      this.comments.push(comment);
+      this.feedbackSerice.update(this.data.feedBackId, {comment: this.comments});
+    })
   }
 
 

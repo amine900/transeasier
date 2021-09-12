@@ -7,11 +7,11 @@
             <div class="col-md- pb-4" >
                 <div class="comment mt-4 text-justify float-left">
                   <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
-                    <h4>{{feedback?.account_id?.userName}}</h4> <span>{{feedback?.created_at}}</span> <br>
+                    <h4>{{feedback?.account_id?.firstName + " " + feedback?.account_id?.lastName}}</h4> <span>{{feedback?.created_at | date:'medium'}}</span> <br>
                     <p>
                       {{feedback?.content}}
                     </p>
-                      <input (click)="openDialog(feedback?._id)" class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
+                      <input (click)="openDialog(feedback?.key, feedback?.comments)" class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
                       <label for="modal-btn">Reply <i class="uil uil-expand-arrows"></i></label>
                 </div>
           </div>
@@ -22,11 +22,9 @@
           <form id="algin-form">
               <div class="form-group">
                   <h4>Leave a comment</h4> <label for="message">Message</label>
-                  <textarea name="msg" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
+                  <textarea [(ngModel)]="content" name="msg" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
               </div>
-              <div class="form-group"> <label for="name">Title</label> <input type="text" name="name" id="fullname" class="form-control"> </div>
-
-              <div class="form-group"> <button type="button" id="post" class="btn" >Post Comment</button> </div>
+              <div class="form-group" (click)="addfeedback()"> <button type="button" id="post" class="btn" >Post Comment</button> </div>
           </form>
       </div>
       </div>

@@ -11,7 +11,7 @@
         <h3 mat-line class="font-weight-bold text-secondary"> {{comment?.account_id?.userName}} </h3>
         <h4 mat-line>{{comment?.account_id?.role}}</h4>
 
-        <h6 mat-column class="text-warning">{{comment?.created_at}}</h6>
+        <h6 mat-column class="text-warning">{{comment?.created_at | date:'medium'}}</h6>
         <div mat-column>
           <button type="button" *ngIf="comment?.deletable" class="close" aria-label="Close" >
             <!-- (click)="comfirmDialog(comment?._id)" -->
@@ -45,8 +45,7 @@ style="display: inline-block;"
 (setPopupAction)="setPopupAction($event)">
 </emoji-input> -->
 <div class="add">
-  <a class="btn btn-info">
-    <!-- (click)="addComment()"  -->
+  <a class="btn btn-info" (click)="addComment()">
     Comment  <i class="fa fa-send-o"></i>
   </a>
 </div>

@@ -9,7 +9,7 @@
               <mat-label>longitude</mat-label>
               <input type="number" matInput  formControlName="longitude">
             </mat-form-field></td>
-            <td><mat-form-field type="number" class="example-full-width" appearance="standard">
+            <td><mat-form-field  class="example-full-width" appearance="standard">
               <mat-label>latitude</mat-label>
               <input type="number" matInput  formControlName="latitude">
             </mat-form-field></td>
@@ -37,5 +37,5 @@
 
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-raised-button color="primary" [mat-dialog-close]="true">Submit</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" [disabled]="addStation.invalid" (click)="onSubmit()">Submit</button>
 </mat-dialog-actions>
