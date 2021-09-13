@@ -11,3 +11,9 @@
   justify-content: flex-end;
 }
 
+::ng-deep {
+  .mat-dialog-container {
+      padding-top: 2px;
+  }
+
+}

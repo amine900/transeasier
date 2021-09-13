@@ -30,12 +30,13 @@ export class CommunityComponent implements OnInit {
 
   }
 
-  openDialog(feedBackId): void {
+  openDialog(feedBackId, comments): void {
     const dialogRef = this.dialog.open(CommentsComponent, {
       height: "auto",
       width: "auto",
       data: {
-        feedBackId
+        feedBackId,
+        comments
       },
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -47,7 +48,7 @@ export class CommunityComponent implements OnInit {
     ,
     account_id: u,
   content: this.content})})
-    
+
   }
 
 }

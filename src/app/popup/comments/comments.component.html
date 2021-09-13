@@ -1,28 +1,28 @@
 
 <mat-dialog-content>
   <mat-card tdMediaToggle="gt-xs" Class="['push-sm']">
-  <mat-card-header class="bg-info">
+  <mat-card-header class="bg-warning mt-1">
     <mat-card-title class="text-light"> Comments</mat-card-title>
 </mat-card-header>
   <mat-list>
     <ng-template let-item let-i="index" let-last="last" ngFor let-comment [ngForOf]="comments">
       <mat-list-item>
-        <img mat-list-avatar src="https://i.imgur.com/yTFUilP.jpg" />
-        <h3 mat-line class="font-weight-bold text-secondary"> {{comment?.account_id?.userName}} </h3>
-        <h4 mat-line>{{comment?.account_id?.role}}</h4>
-
-        <h6 mat-column class="text-warning">{{comment?.created_at | date:'medium'}}</h6>
+        <img mat-list-avatar [src]="comment.account_id.photoURL" />
+        <h2 mat-line class="font-weight-bold text-secondary"> {{comment?.account_id?.firstName}} {{comment?.account_id?.lastName}}</h2>
+        <p mat-column class="text-muted" ><small>
+          {{comment?.created_at | date:'short'}}
+        </small></p>
         <div mat-column>
           <button type="button" *ngIf="comment?.deletable" class="close" aria-label="Close" >
             <!-- (click)="comfirmDialog(comment?._id)" -->
             <span class="colorchanged" aria-hidden="true">&times;</span>
           </button>
         </div>
-        <p mat-line>
+        <h3 style="color : gray" mat-line>
           <span class="text-wrap">
-          <b class="text-secondary">content :</b>   {{comment?.content}}
+           {{comment?.content}}
           </span>
-        </p>
+        </h3>
       </mat-list-item>
       <mat-divider *ngIf="!last" mat-inset></mat-divider>
     </ng-template>
@@ -45,7 +45,7 @@ style="display: inline-block;"
 (setPopupAction)="setPopupAction($event)">
 </emoji-input> -->
 <div class="add">
-  <a class="btn btn-info" (click)="addComment()">
+  <a class="btn btn-warning" (click)="addComment()">
     Comment  <i class="fa fa-send-o"></i>
   </a>
 </div>

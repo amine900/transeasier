@@ -10,7 +10,7 @@ import { ComfirmDialogComponent } from '../comfirm-dialog/comfirm-dialog.compone
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.css']
+  styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {
   myText: any = '';
@@ -31,7 +31,7 @@ export class CommentsComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data.feedBackId);
     this.comments = this.data.comments === undefined ? [] : this.data.comments
-    console.log(this.comments)
+    console.log(this.data.comments)
   }
 
   addComment() {
