@@ -1,13 +1,13 @@
 <div class="d-flex justify-content-between flex-wrap">
     <div>
         <ul *ngFor="let metro of transportService.metros; let i = index;">
-            <li class="d-flex justify-content-between align-items-center" (click)="selectBus(bus)">{{metro.key}}
-                <button mat-raised-button color="primary" (click)="show()">edit</button>
+            <li class="d-flex justify-content-between align-items-center">{{metro.key}}
+                <button mat-raised-button color="primary" (click)="selectMetro(metro)">edit</button>
                 <button mat-raised-button color="warn" (click)="deleteMetro(bus.key)">delete</button>
                 <mat-slide-toggle checked="{{metro.availability == 'available'}}" (click)="onChangeStatus(metro.key, metro.availability)">{{metro.availability}}</mat-slide-toggle>
             </li>
             <hr>
         </ul>
     </div>
-    <app-update-transport *ngIf="settings" class="w-25" [tranport]="selectedMetro" [type]="metro"></app-update-transport>
+    <app-update-transport *ngIf="settings" class="w-25" [transport]="selectedMetro" [type]="metro"></app-update-transport>
 </div>

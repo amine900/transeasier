@@ -19,6 +19,7 @@ export class UpdateTransportComponent implements OnChanges {
   }
   ngOnChanges(): void {
     setTimeout(() => {
+      console.log(this.transport)
       for (const [key, value] of Object.entries(this.transport.stations)) {
         this.addStation(key, value["arrival"]);
         console.log(key)
@@ -51,16 +52,16 @@ export class UpdateTransportComponent implements OnChanges {
       this.StationsService.getStationLocation(this.stationsinputs.get(`${index}.station`).value).valueChanges().subscribe(location => {
         console.log(this.updateTransport.value)
         if (index == 0) {
-          this.transportService.setTransport("/buses", `${this.transport.key}/nextStation/arrival`, this.stationsinputs.get(`${index}.arrival`).value)
-          this.transportService.setTransport("/buses", `${this.transport.key}/nextStation/location`, location)
-          this.transportService.setTransport("/buses", `${this.transport.key}/nextStation/name`, this.stationsinputs.get(`${index}.station`).value)
-          this.transportService.setTransport("/buses", `${this.transport.key}/time`, this.stationsinputs.get(`${index}.arrival`).value)
-          this.transportService.setTransport("/buses", `${this.transport.key}/station`, this.stationsinputs.get(`${index}.station`).value)
+          this.transportService.setTransport(this.type, `${this.transport.key}/nextStation/arrival`, this.stationsinputs.get(`${index}.arrival`).value)
+          this.transportService.setTransport(this.type, `${this.transport.key}/nextStation/location`, location)
+          this.transportService.setTransport(this.type, `${this.transport.key}/nextStation/name`, this.stationsinputs.get(`${index}.station`).value)
+          this.transportService.setTransport(this.type, `${this.transport.key}/time`, this.stationsinputs.get(`${index}.arrival`).value)
+          this.transportService.setTransport(this.type, `${this.transport.key}/station`, this.stationsinputs.get(`${index}.station`).value)
         }
-        console.log("/buses", `${this.transport.key}/stations/${this.stationsinputs.get(`${index}.station`).value}/location`, location);
-        console.log("/buses", `${this.transport.key}/stations/${this.stationsinputs.get(`${index}.station`).value}/location`, this.stationsinputs.get(`${index}.arrival`).value);
-        this.transportService.setTransport("/buses", `${this.transport.key}/stations/${this.stationsinputs.get(`${index}.station`).value}/location`, location);
-        this.transportService.setTransport("/buses", `${this.transport.key}/stations/${this.stationsinputs.get(`${index}.station`).value}/arrival`, this.stationsinputs.get(`${index}.arrival`).value)
+        console.log(this.type, `${this.transport.key}/stations/${this.stationsinputs.get(`${index}.station`).value}/location`, location);
+        console.log(this.type, `${this.transport.key}/stations/${this.stationsinputs.get(`${index}.station`).value}/location`, this.stationsinputs.get(`${index}.arrival`).value);
+        this.transportService.setTransport(this.type, `${this.transport.key}/stations/${this.stationsinputs.get(`${index}.station`).value}/location`, location);
+        this.transportService.setTransport(this.type, `${this.transport.key}/stations/${this.stationsinputs.get(`${index}.station`).value}/arrival`, this.stationsinputs.get(`${index}.arrival`).value)
       })
     }
   }

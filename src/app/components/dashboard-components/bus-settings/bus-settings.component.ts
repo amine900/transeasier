@@ -25,8 +25,11 @@ export class BusSettingsComponent implements OnInit {
     ).subscribe(buses => {this.transportService.buses = buses}
     )
   }
-  show() {
+  selectBus(bus) {
     this.settings = true
+    
+    this.selectedBus = bus
+    console.log(this.selectedBus)
   }
   onChangeStatus(key, newValue:string): void {
     console.log(newValue)
@@ -35,8 +38,5 @@ export class BusSettingsComponent implements OnInit {
   deleteBus(key) {
     console.log(1)
     this.transportCrud.deleteTransport('/buses', key)
-  }
-  selectBus(bus) {
-    this.selectedBus = bus
   }
 }

@@ -1,0 +1,23 @@
+
+<form class="example-form" [formGroup]="updateStation">
+    {{station.key}} <button mat-raised-button (click)="addTransport('','')">add</button>
+      <div formArrayName="transportsinputs">
+                <div [formGroupName]="i"
+                *ngFor="let transport of transportsinputs.controls; let i=index">
+                    <table class="example-full-width" cellspacing="0"><tr>
+                        <td><mat-form-field class="example-full-width" appearance="standard">
+                          <mat-label>transportation id</mat-label>
+                          <input matInput placeholder="Transport123" formControlName="transport">
+                        </mat-form-field></td>
+                        <td>
+                            <mat-form-field class="example-full-width" appearance="standard">
+                                <mat-label>arrival</mat-label>
+                                <input matInput type="time" formControlName="arrival">
+                            </mat-form-field></td>
+                          <td><button mat-raised-button color="warn" (click)="deleteTransport(i)">delete</button></td>
+                      </tr>
+                    </table>
+            </div>
+            </div>
+            <button mat-raised-button color="primary" [disabled]="updateStation.invalid" >Save</button>
+    </form>

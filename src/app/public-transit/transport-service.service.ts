@@ -15,6 +15,7 @@ export class TransportServiceService {
   buses:Transport[];
   filteredBuses: Transport[];
   TGMlist:Transport[];
+  stations
   filteredTGM: Transport[];
   sortValue: String = "time"
   constructor(private db: AngularFireDatabase, private http: HttpClient) {
