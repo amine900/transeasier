@@ -1,1 +1,13 @@
-<p>tgmsettings works!</p>
+<div class="d-flex justify-content-between flex-wrap">
+    <div>
+        <ul *ngFor="let tgm of transportService.TGMlist; let i = index;">
+            <li class="d-flex justify-content-between align-items-center" (click)="selectBus(tgm)">{{tgm.key}}
+                <button mat-raised-button color="primary" (click)="show()">edit</button>
+                <button mat-raised-button color="warn" (click)="deleteTGM(bus.key)">delete</button>
+                <mat-slide-toggle checked="{{tgm.availability == 'available'}}" (click)="onChangeStatus(tgm.key, tgm.availability)">{{tgm.availability}}</mat-slide-toggle>
+            </li>
+            <hr>
+        </ul>
+    </div>
+    <app-update-transport *ngIf="settings" class="w-25" [transport]="selectedTGM" [type]="TGM"></app-update-transport>
+</div>

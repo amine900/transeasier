@@ -11,7 +11,8 @@ import { TransportcrudService } from 'src/app/services/transportcrud.service';
 })
 export class BusSettingsComponent implements OnInit {
   settings:boolean = false;
-  selectedBus: Transport
+  selectedBus: Transport;
+  bus = "/buses"
   constructor(public transportService: TransportServiceService, private transportCrud: TransportcrudService) { }
 
   ngOnInit(): void {
@@ -25,7 +26,7 @@ export class BusSettingsComponent implements OnInit {
     )
   }
   show() {
-    this.settings = !this.settings 
+    this.settings = true
   }
   onChangeStatus(key, newValue:string): void {
     console.log(newValue)
@@ -36,6 +37,6 @@ export class BusSettingsComponent implements OnInit {
     this.transportCrud.deleteTransport('/buses', key)
   }
   selectBus(bus) {
-
+    this.selectedBus = bus
   }
 }
