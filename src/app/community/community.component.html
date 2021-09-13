@@ -10,8 +10,8 @@
                     <p>
                       {{feedback?.content}}
                     </p>
-                      <input (click)="openDialog(feedback?.key, feedback?.comment)" class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
-                      <label for="modal-btn">Reply <i class="uil uil-expand-arrows"></i></label>
+                      <input  class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
+                      <label for="modal-btn" style="background-color: #ff7000; color : white" (click)="openDialog(feedback?.key, feedback?.comment,feedback?.account_id, feedback)">Reply <i class="uil uil-expand-arrows modal-btn"></i></label>
                 </div>
           </div>
       </div>
@@ -22,7 +22,7 @@
                   <h4>Leave a comment</h4> <label for="message">Message</label>
                   <textarea [(ngModel)]="content" name="msg" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
               </div>
-              <div class="form-group" (click)="addfeedback()"> <button type="button" id="post" class="btn" >Post Comment</button> </div>
+              <div class="form-group" (click)="addfeedback()"> <button type="button" id="post" class="btn btn-warning text-white" >Post Comment</button> </div>
           </form>
       </div>
       </div>

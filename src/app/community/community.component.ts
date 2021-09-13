@@ -19,7 +19,6 @@ export class CommunityComponent implements OnInit {
   constructor(public dialog: MatDialog, public feedbackService: FeedbackService, public auth: AuthService) { }
 
   ngOnInit(): void {
- console.log("hani fil community");
  this.feedbackService.getfeedbacks().snapshotChanges().pipe(
   map(changes =>
     changes.map(c =>
@@ -30,13 +29,17 @@ export class CommunityComponent implements OnInit {
 
   }
 
-  openDialog(feedBackId, comments): void {
+  openDialog(feedBackId, comments, userId, feedback): void {
+    console.log(feedback);
+
     const dialogRef = this.dialog.open(CommentsComponent, {
       height: "auto",
       width: "auto",
       data: {
         feedBackId,
-        comments
+        comments,
+        userId
+
       },
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -48,7 +51,7 @@ export class CommunityComponent implements OnInit {
     ,
     account_id: u,
   content: this.content})})
-    
+
   }
 
 }

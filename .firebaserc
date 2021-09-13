@@ -1,11 +1,5 @@
 {
-  "targets": {
-    "transeasier-bc9fc": {
-      "hosting": {
-        "transeasier": [
-          "transeasier-bc9fc"
-        ]
-      }
-    }
+  "projects": {
+    "default": "transeasier-bc9fc"
   }
 }
