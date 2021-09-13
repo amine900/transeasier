@@ -27,6 +27,6 @@
             </div>
             <h5 class="m-0">{{ride.user?.firstName | titlecase}}</h5>
         </div>
-        <button mat-raised-button color="warn" class="contact" (click)="dialog.openDialog(contactDriverRef, {data: ride.user})">Contact driver</button>
+        <button mat-raised-button class="contact " (click)="dialog.openDialog(contactDriverRef, {data: ride.user})">Contact driver</button>
     </div>
 </div>
