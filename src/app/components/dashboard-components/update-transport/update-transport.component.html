@@ -1,20 +1,18 @@
-<table mat-table [dataSource]="stations" class="mat-elevation-z8 w-100">
 
-    <ng-container matColumnDef="station">
-      <th mat-header-cell *matHeaderCellDef>station</th>
-      <td mat-cell *matCellDef="let element"> {{element.station}} </td>
-    </ng-container>
-  
-    <ng-container matColumnDef="arrival">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.arrival}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef><button mat-raised-button>add</button></th>
-      <td mat-cell *matCellDef="let element"><button mat-raised-button color="warn">Delete</button></td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+<form class="example-form" [formGroup]="updateTransport">
+            <div [formGroupName]="i"
+            *ngFor="let station of stationsinputs.controls; let i=index">
+                <table class="example-full-width" cellspacing="0"><tr>
+                    <td><mat-form-field class="example-full-width" appearance="standard">
+                      <mat-label>transportation id</mat-label>
+                      <input matInput placeholder="Station123" formControlName="transport">
+                    </mat-form-field></td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="standard">
+                            <mat-label>arrival</mat-label>
+                            <input matInput type="time" formControlName="arrival">
+                        </mat-form-field></td>
+                  </tr>
+                </table>
+        </div>
+</form>
