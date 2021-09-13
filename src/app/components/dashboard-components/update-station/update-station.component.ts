@@ -1,4 +1,3 @@
-import { stringify } from '@angular/compiler/src/util';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Station } from 'src/app/models/station';
@@ -18,7 +17,7 @@ export class UpdateStationComponent implements OnChanges {
     setTimeout(() => {
       console.log(this.station)
       for (const [key, value] of Object.entries(this.station.schedule)) {
-        this.addTransport(key, stringify(value));
+        this.addTransport(key, value.toString());
         console.log(key)
         console.log(value)
       }
@@ -42,5 +41,12 @@ export class UpdateStationComponent implements OnChanges {
   deleteStation(index) {
     this.transportsinputs.removeAt(index)
   }
-  
+  onSave() {
+    var schedule = {}
+    for (let index = 0; index < this.transportsinputs.length; index++) {
+      let id:string = this.transportsinputs.get(`${index}.transport`).value
+      let time:string = this.transportsinputs.get(`${index}.arrival`).value
+      this.stationcrud.setStation(`${this.updateStation.get("name").value}/schedule/`, {schedule})
+    }
+  }
 }

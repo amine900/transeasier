@@ -19,5 +19,5 @@
                     </table>
             </div>
             </div>
-            <button mat-raised-button color="primary" [disabled]="updateStation.invalid" >Save</button>
+            <button mat-raised-button color="primary" [disabled]="updateStation.invalid" (click)="onSave()" >Save</button>
     </form>
