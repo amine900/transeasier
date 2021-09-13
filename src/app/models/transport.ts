@@ -6,4 +6,5 @@ export class Transport {
     seats: string;
     stationCoords: string;
     locationAddress:string;
+    stations?: any
 }
