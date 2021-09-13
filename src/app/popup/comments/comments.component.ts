@@ -45,7 +45,7 @@ export class CommentsComponent implements OnInit {
 
       let comment:Comment = {account_id: u, content:this.myText, created_at:Date.now()}
       this.comments.push(comment);
-      this.toastr.success("a comment has added")
+      this.toastr.success("a comment added")
 
         if(this.data.userId ==  localStorage.getItem('user')) {
           console.log("Salem");
