@@ -5,7 +5,7 @@
         <div class="row" *ngFor="let feedback of feedbacks">
             <div class="col-md- pb-4" >
                 <div class="comment mt-4 text-justify float-left">
-                  <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40">
+                  <img [src]="feedback.account_id.photoURL" alt="" class="rounded-circle" width="40" height="40">
                     <h4>{{feedback?.account_id?.firstName + " " + feedback?.account_id?.lastName}}</h4> <span>{{feedback?.created_at | date:'medium'}}</span> <br>
                     <p>
                       {{feedback?.content}}
