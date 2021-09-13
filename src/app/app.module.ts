@@ -29,19 +29,20 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ComfirmDialogComponent } from './popup/comfirm-dialog/comfirm-dialog.component';
 import { MatSelectModule } from '@angular/material/select';
-import { NgxNotifierModule } from 'ngx-notifier';
+import { NgxNotificationComponent } from 'ngx-notification';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     CommentsComponent,
-    ComfirmDialogComponent  ],
+    ComfirmDialogComponent,
+     ],
   imports: [
     AppRoutingModule,
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxNotifierModule,
     BrowserAnimationsModule,
     BrowserModule,
     NgbModule,
@@ -60,7 +61,8 @@ import { NgxNotifierModule } from 'ngx-notifier';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    ToastrModule.forRoot()
   ],
   exports : [
     MatDialogModule,

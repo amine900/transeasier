@@ -6,7 +6,7 @@ import { Comment } from 'src/app/models/comment.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { ComfirmDialogComponent } from '../comfirm-dialog/comfirm-dialog.component';
-import { NgxNotifierService } from 'ngx-notifier/lib/services/ngx-notifier.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-comments',
@@ -27,22 +27,11 @@ export class CommentsComponent implements OnInit {
               public dialog: MatDialog,
               public router : Router ,
               public dialogRef: MatDialogRef<ComfirmDialogComponent>,
-              private ngxNotifierService: NgxNotifierService
-  ) { }
-  /** crates a toast message */
-  createToast(style: string, content : string): void {
-    this.ngxNotifierService.createToast(content, style);
-    return;
-  }
-  /** clears all toast messages */
-  clearToasts() {
-    this.ngxNotifierService.clear();
+              private toastr: ToastrService
+  ) {
+
   }
 
-    /** clear last toast notification */
-    clearLastToast() {
-      this.ngxNotifierService.clearLast();
-    }
   ngOnInit(): void {
     console.log(this.data.feedBackId);
     this.comments = this.data.comments === undefined ? [] : this.data.comments
@@ -56,10 +45,10 @@ export class CommentsComponent implements OnInit {
 
       let comment:Comment = {account_id: u, content:this.myText, created_at:Date.now()}
       this.comments.push(comment);
+      this.toastr.success("a comment has added")
 
         if(this.data.userId ==  localStorage.getItem('user')) {
           console.log("Salem");
-          this.createToast("", "A User comment to your post");
                 }
       this.feedbackSerice.update(this.data.feedBackId, {comment: this.comments});
 
