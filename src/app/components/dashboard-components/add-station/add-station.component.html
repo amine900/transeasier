@@ -1,9 +1,22 @@
 <h2 mat-dialog-title>Add station</h2>
 <form class="example-form" [formGroup]="addStation">
-        <mat-form-field class="example-full-width" appearance="standard">
-            <mat-label>name</mat-label>
-            <input matInput  formControlName="name">
-        </mat-form-field>       
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width" appearance="standard">
+      <mat-label>name</mat-label>
+      <input matInput  formControlName="name">
+  </mat-form-field>
+</td>
+    <td><mat-form-field>
+      <mat-label></mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="bus">bus</mat-option>
+        <mat-option value="metro">metro</mat-option>
+        <mat-option value="tgm">tgm</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </td>
+  </tr>
+</table>
         <table class="example-full-width" cellspacing="0"><tr>
             <td><mat-form-field class="example-full-width" appearance="standard">
               <mat-label>longitude</mat-label>

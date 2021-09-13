@@ -31,7 +31,7 @@ export class CommentsComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data.feedBackId);
     this.comments = this.data.comments === undefined ? [] : this.data.comments
-    console.log(this.comments)
+    console.log(this.data.comments)
   }
 
   addComment() {

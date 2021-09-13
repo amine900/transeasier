@@ -28,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ComfirmDialogComponent } from './popup/comfirm-dialog/comfirm-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ComfirmDialogComponent } from './popup/comfirm-dialog/comfirm-dialog.co
     MatCardModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   exports : [
     MatDialogModule,

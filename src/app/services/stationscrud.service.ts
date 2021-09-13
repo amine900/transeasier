@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
 import { Station } from '../models/station';
 
 @Injectable({
@@ -23,5 +23,8 @@ export class StationscrudService {
   
   delete(key:string): Promise<void> {
     return this.stationRef.remove(key)
+  }
+  getStationLocation(station:string): AngularFireObject<Station> {
+    return this.db.object(`stations/${station}/coords`)
   }
 }
