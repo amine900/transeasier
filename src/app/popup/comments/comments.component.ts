@@ -38,7 +38,12 @@ export class CommentsComponent implements OnInit {
     this.auth.user$.subscribe(u => {
       let comment:Comment = {account_id: u, content:this.myText, created_at:Date.now()}
       this.comments.push(comment);
+        if(this.data.userId == localStorage.getItem('user')) {
+          console.log("Salem");
+
+        }
       this.feedbackSerice.update(this.data.feedBackId, {comment: this.comments});
+
     })
   }
 

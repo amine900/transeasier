@@ -15,8 +15,6 @@ export class AppComponent implements OnInit{
     this.getScreenSize();
     this.router.events.subscribe((val) =>
     {
-      console.log(val);
-
       let footer = document.getElementById('footer');
       if(this.router.url == "/changalni" || this.router.url=="/publicTransit/bus" || this.router.url=="/publicTransit/metro" || this.router.url=="/publicTransit/TGM"){
         footer.style.position = "fixed";
@@ -26,7 +24,6 @@ export class AppComponent implements OnInit{
         footer.style.position = "static";
         footer.style.width = "100%";
         footer.style.bottom = "0";
-        console.log("hani fil else");
 
       }
 

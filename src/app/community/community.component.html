@@ -10,8 +10,8 @@
                     <p>
                       {{feedback?.content}}
                     </p>
-                      <input (click)="openDialog(feedback?.key, feedback?.comment)"  class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
-                      <label for="modal-btn" style="background-color: #ff7000; color : white">Reply <i class="uil uil-expand-arrows modal-btn"></i></label>
+                      <input  class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
+                      <label for="modal-btn" style="background-color: #ff7000; color : white" (click)="openDialog(feedback?.key, feedback?.comment,feedback?.account_id, feedback)">Reply <i class="uil uil-expand-arrows modal-btn"></i></label>
                 </div>
           </div>
       </div>

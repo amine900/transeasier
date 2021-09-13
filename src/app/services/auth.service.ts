@@ -34,8 +34,11 @@ export class AuthService {
   emailSignin(email: string, pwd: string) {
     const credential = this.afAuth.signInWithEmailAndPassword(email, pwd);
     credential
-      .then(() => {
+      .then((e) => {
+
         this.router.navigate(['/home']);
+        localStorage.setItem('user', e.user.uid);
+
       })
       .catch((e) => {
         if (e.code == 'auth/user-not-found') {

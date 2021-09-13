@@ -1,15 +1,5 @@
 {
   "projects": {
-    "default": "transeasier-bc9fc",
-    "firebase serve --only hosting": "transeasier-bc9fc"
-  },
-  "targets": {
-    "transeasier-bc9fc": {
-      "hosting": {
-        "transeasier": [
-          "transeasier-bc9fc"
-        ]
-      }
-    }
+    "default": "transeasier-bc9fc"
   }
 }
