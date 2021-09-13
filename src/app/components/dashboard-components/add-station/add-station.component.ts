@@ -35,13 +35,14 @@ export class AddStationComponent implements OnInit {
     this.schedule.push(this.build())
   }
   onSubmit() {
-    this.stationService.setStation(`${this.addStation.get("name").value}/type/`, this.addStation.get("type").value)
+    console.log(`${this.addStation.get("name").value}/type`, this.addStation.get("type").value)
     this.stationService.setStation(this.addStation.get("name").value, {coords: `${this.addStation.get("longitude").value},${this.addStation.get("latitude").value}`})
     for (let index = 0; index < this.schedule.length; index++) {
       let id:string = this.schedule.get(`${index}.transport`).value
       let time:string = this.schedule.get(`${index}.arrival`).value
       this.stationService.setStation(`${this.addStation.get("name").value}/schedule/${id}`, time)
     }
+    this.stationService.setStation(`${this.addStation.get("name").value}/type`, this.addStation.get("type").value).then(() => {"hi"}).catch((e) => {console.log(e)})
     this.snackbar.openSnackBar("station added succefully");
     this.addStation.reset();
   }

@@ -29,7 +29,7 @@ export class BusComponent implements OnInit {
   ).subscribe(
      rs => {
        rs.forEach(transport => {this.busService.reverseGeocoding(transport).subscribe(data => {
-        transport.locationAddress = data["features"][0].place_name
+        transport.locationAddress = data["features"][0]?.place_name
         this.busService.buses = this.busService.filteredBuses = rs
         console.log(this.busService.filteredBuses)
         this.busService.filteredBuses = this.busService.filterTrans(rs)

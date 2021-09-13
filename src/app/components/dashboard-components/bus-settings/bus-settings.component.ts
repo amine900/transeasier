@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Transport } from 'src/app/models/transport';
 import { TransportServiceService } from 'src/app/public-transit/transport-service.service';
+import { TransportcrudService } from 'src/app/services/transportcrud.service';
 
 @Component({
   selector: 'app-bus-settings',
@@ -9,8 +11,8 @@ import { TransportServiceService } from 'src/app/public-transit/transport-servic
 })
 export class BusSettingsComponent implements OnInit {
   settings:boolean = false;
-
-  constructor(public transportService: TransportServiceService) { }
+  selectedBus: Transport
+  constructor(public transportService: TransportServiceService, private transportCrud: TransportcrudService) { }
 
   ngOnInit(): void {
     this.transportService.getAll("buses").snapshotChanges().pipe(
@@ -25,5 +27,15 @@ export class BusSettingsComponent implements OnInit {
   show() {
     this.settings = !this.settings 
   }
+  onChangeStatus(key, newValue:string): void {
+    console.log(newValue)
+    this.transportCrud.updateTransport('/buses', key, {availability: newValue == "available" ? "unavailable": "available"});
+}
+  deleteBus(key) {
+    console.log(1)
+    this.transportCrud.deleteTransport('/buses', key)
+  }
+  selectBus(bus) {
 
+  }
 }

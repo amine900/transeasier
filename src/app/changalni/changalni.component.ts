@@ -20,7 +20,7 @@ export class ChangalniComponent implements OnInit {
   orangeTickets: any[]
   TelecomTickets: any[]
   park: park_auth = new park_auth()
-  errmsg:string =''; 
+  errmsg:string ='';
   submitted:boolean = false;
   err:boolean = false;
   constructor(private fb: FormBuilder, private cs: ChagelniService) { }
@@ -114,7 +114,7 @@ export class ChangalniComponent implements OnInit {
         validity = '24 Hour'
       }
     this.submitted=true
-      
+
     this.park.releaseDate =Date()
     this.park.validity = validity;
     this.park.car = car;
@@ -123,7 +123,7 @@ export class ChangalniComponent implements OnInit {
   });
    // this.park.key = this.findticket.get('id')
    // console.log(this.park);
-    
+
 
 
     }
@@ -133,8 +133,8 @@ export class ChangalniComponent implements OnInit {
       this.err=true
     }
   }
-} 
+}
 
 
-  
+
 

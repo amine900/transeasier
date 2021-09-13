@@ -15,4 +15,10 @@ export class TransportcrudService {
   setTransport(t, key:string, data:any) {
     return this.db.list(t).set(key, data);
   }
+  updateTransport(t, key:string, data: any) {
+    return this.db.list(t).update(key, data)
+  }
+  deleteTransport(t, key:string) {
+    return this.db.list(t).remove(key)
+  }
 }

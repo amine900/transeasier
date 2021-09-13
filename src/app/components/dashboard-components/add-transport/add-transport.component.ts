@@ -16,11 +16,9 @@ export class AddTransportComponent implements OnInit {
 
   ngOnInit(): void {
     this.addTransport = this.fb.group({
-      type: ['', Validators.required],
+      type: ['/buses', Validators.required],
       name: ['', [Validators.required, Validators.minLength(3)]],
       seats: ['', [Validators.required, Validators.min(1)]],
-      longitude: ['', [Validators.required, Validators.minLength(3)]],
-      latitude: ['', [Validators.required, Validators.minLength(3)]],
       stations: this.fb.array([this.build()])
     })
   }
@@ -37,24 +35,29 @@ export class AddTransportComponent implements OnInit {
     this.stations.push(this.build())
   } 
   onSubmit() {
-    this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/location`, `${this.addTransport.get("longitude").value},${this.addTransport.get("latitude").value}`)
     this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/totalSeats`, this.addTransport.get("seats").value)
+    
+    this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/location`, '')
+    this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/availability`, 'available')
     for (let index = 0; index < this.stations.length; index++) {
-      var stationList:string = ""
-      stationList = stationList + this.stations.get(`${index}.station`).value
+      var stationList:string[] = []
+      stationList.push(this.stations.get(`${index}.station`).value)
       this.StationsService.getStationLocation(this.stations.get(`${index}.station`).value).valueChanges().subscribe(location => {
+        console.log(this.addTransport.value)
         if (index == 0) {
-    this.transportService.setTransport(this.addTransport.get("type"), `${this.addTransport.get("name").value}/nextStation/arrival`, stationList)
-    this.transportService.setTransport(this.addTransport.get("type"), `${this.addTransport.get("name").value}/nextStation/location`, stationList)
-    this.transportService.setTransport(this.addTransport.get("type"), `${this.addTransport.get("name").value}/nextStation/name`, stationList)
+    this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/nextStation/arrival`, this.stations.get(`${index}.arrival`).value)
+    this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/nextStation/location`, location)
+    this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/nextStation/name`, this.stations.get(`${index}.station`).value)
+    this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/time`, this.stations.get(`${index}.arrival`).value)
+    this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/station`, this.stations.get(`${index}.station`).value)
         }
-        this.transportService.setTransport(this.addTransport.get("type"), `${this.addTransport.get("name").value}/schedule/stations/${this.stations.get(`${index}.station`).value}/location`, location)
-        this.transportService.setTransport(this.addTransport.get("type"), `${this.addTransport.get("name").value}/schedule/stations/${this.stations.get(`${index}.station`).value}/location`, this.stations.get(`${index}.arrival`).value)
+        console.log(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/stations/${this.stations.get(`${index}.station`).value}/location`, location);
+        console.log(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/stations/${this.stations.get(`${index}.station`).value}/location`, this.stations.get(`${index}.arrival`).value);
+        this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/stations/${this.stations.get(`${index}.station`).value}/location`, location);
+        this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/stations/${this.stations.get(`${index}.station`).value}/arrival`, this.stations.get(`${index}.arrival`).value)
       })
     }
-    this.transportService.setTransport(this.addTransport.get("type"), `${this.addTransport.get("name").value}/stationsList`, stationList)
     this.snackbar.openSnackBar("added succefully");
-    this.addTransport.reset();
   }
 
 }

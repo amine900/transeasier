@@ -13,7 +13,7 @@ export class StationComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.stationService
-      .getObj('/stations/' + this.station)
+      .getObj('/stations/' + this.station +'/schedule/')
       .valueChanges()
       .subscribe((t) => {
         this.timetable = Object.entries(t)
