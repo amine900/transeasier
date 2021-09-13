@@ -14,7 +14,7 @@
                     <a class="forgot" (click)="forgotPwdUpdate()">Forgot password?</a>
                 </div>
             </div>
-            <button (click)="auth.emailSignin(loginForm.get('email').value, loginForm.get('pwd').value)" type="submit" class="btn login-btn btn-block mb-4">Sign in</button>
+            <button (click)="auth.emailSignin(loginForm.get('email').value, loginForm.get('pwd').value)" type="submit" class="btn login-btn b btn-block mb-4 ">Sign in</button>
             <div *ngIf="forgotPwd">
                 <app-pwd-reset></app-pwd-reset>
             </div>
