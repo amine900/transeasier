@@ -31,7 +31,7 @@ export class CommunityComponent implements OnInit {
 
   openDialog(feedBackId, comments, userId, feedback): void {
     console.log(feedback);
-
+    console.log(userId);
     const dialogRef = this.dialog.open(CommentsComponent, {
       height: "auto",
       width: "auto",
