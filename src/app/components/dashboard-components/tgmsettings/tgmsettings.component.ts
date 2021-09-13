@@ -25,9 +25,6 @@ export class TGMSettingsComponent implements OnInit {
     ).subscribe(TGM => {this.transportService.TGMlist = TGM}
     )
   }
-  show() {
-    this.settings = true
-  }
   onChangeStatus(key, newValue:string): void {
     console.log(newValue)
     this.transportCrud.updateTransport('/TGM', key, {availability: newValue == "available" ? "unavailable": "available"});
@@ -36,8 +33,9 @@ export class TGMSettingsComponent implements OnInit {
     console.log(1)
     this.transportCrud.deleteTransport('/TGM', key)
   }
-  selectTGM(bus) {
-    this.selectedTGM = bus
+  selectTGM(tgm) {
+    this.selectedTGM = tgm
+    this.settings = true
   }
 
 

@@ -1,1 +1,14 @@
-<p>station-settings works!</p>
+<div class="d-flex justify-content-between flex-wrap">
+    <div>
+        <ul *ngFor="let station of transportService.stations; let i = index;">
+            <li class="d-flex justify-content-between align-items-center">{{station.key}}
+                <button mat-raised-button color="primary" (click)="selectStation(station)">edit</button>
+                <button mat-raised-button color="warn" (click)="deleteStation(statoin.key)">delete</button>
+            </li>
+            <hr>
+        </ul>
+    </div>
+
+</div>
+
+<app-update-station *ngIf="settings" class="w-25" [station]="selectedStation"></app-update-station>

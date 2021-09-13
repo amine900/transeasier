@@ -25,9 +25,6 @@ export class MetroSettingsComponent implements OnInit {
     ).subscribe(metros => {this.transportService.metros = metros}
     )
   }
-  show() {
-    this.settings = true
-  }
   onChangeStatus(key, newValue:string): void {
     console.log(newValue)
     this.transportCrud.updateTransport('/metros', key, {availability: newValue == "available" ? "unavailable": "available"});
@@ -38,5 +35,7 @@ deleteMetro(key) {
 }
 selectMetro(metro) {
   this.selectedMetro = metro
+  this.settings = true
+  console.log(metro)
 }
 }

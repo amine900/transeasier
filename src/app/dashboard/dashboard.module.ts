@@ -24,6 +24,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { StationSettingsComponent } from '../components/dashboard-components/station-settings/station-settings.component';
 import { MetroSettingsComponent } from '../components/dashboard-components/metro-settings/metro-settings.component';
 import { TGMSettingsComponent } from '../components/dashboard-components/tgmsettings/tgmsettings.component';
+import { UpdateStationComponent } from '../components/dashboard-components/update-station/update-station.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TGMSettingsComponent } from '../components/dashboard-components/tgmsett
     UpdateTransportComponent,
     StationSettingsComponent,
     MetroSettingsComponent,
-    TGMSettingsComponent
+    TGMSettingsComponent,
+    UpdateStationComponent
   ],
   imports: [
     CommonModule,
