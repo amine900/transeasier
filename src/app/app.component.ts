@@ -16,16 +16,16 @@ export class AppComponent implements OnInit{
     this.router.events.subscribe((val) =>
     {
       let footer = document.getElementById('footer');
-      if(this.router.url == "/changalni" || this.router.url=="/publicTransit/bus" || this.router.url=="/publicTransit/metro" || this.router.url=="/publicTransit/TGM"){
-        footer.style.position = "fixed";
-        footer.style.width = "100%";
-      }
-      else {
-        footer.style.position = "static";
-        footer.style.width = "100%";
-        footer.style.bottom = "0";
+      // if(this.router.url == "/changalni" || this.router.url=="/publicTransit/bus" || this.router.url=="/publicTransit/metro" || this.router.url=="/publicTransit/TGM"){
+      //   footer.style.position = "fixed";
+      //   footer.style.width = "100%";
+      // }
+      // else {
+      //   footer.style.position = "static";
+      //   footer.style.width = "100%";
+      //   footer.style.bottom = "0";
 
-      }
+      // }
 
     }
     )

@@ -43,7 +43,7 @@ body {
 }
 
 .active {
-    background-color: rgb(92 128 190 / 90%) !important;
+    background-color: #ff7000 !important;
     color: white !important;
 }
 .edit {

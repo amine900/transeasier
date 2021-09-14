@@ -24,11 +24,11 @@ export class PasswordComponent implements OnInit {
   pwdMatcher(c: AbstractControl): { [key: string]: boolean } | null {
     const pwdControl = c.get('newpwd');
     const confirmControl = c.get('confirmPwd');
-  
+
     if (pwdControl.pristine || confirmControl.pristine) {
       return null;
     }
-  
+
     if (pwdControl.value === confirmControl.value) {
       return null;
     }
