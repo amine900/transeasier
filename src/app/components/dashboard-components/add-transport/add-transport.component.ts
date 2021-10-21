@@ -33,10 +33,10 @@ export class AddTransportComponent implements OnInit {
   }
   addStation() {
     this.stations.push(this.build())
-  } 
+  }
   onSubmit() {
-    this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/totalSeats`, this.addTransport.get("seats").value)
-    
+    this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/seats`, this.addTransport.get("seats").value)
+
     this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/location`, '')
     this.transportService.setTransport(this.addTransport.get("type").value, `${this.addTransport.get("name").value}/availability`, 'available')
     for (let index = 0; index < this.stations.length; index++) {
